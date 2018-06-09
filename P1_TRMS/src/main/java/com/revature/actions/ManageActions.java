@@ -1,7 +1,7 @@
 package com.revature.actions;
-import com.revature.DAOImple.EmployeeDAOImple;
 import javax.servlet.http.HttpServletRequest;
 
+import com.revature.DAOImpl.EmployeeDAOImpl;
 import com.revature.beans.Employee;
 
 public class ManageActions {
