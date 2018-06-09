@@ -8,25 +8,31 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.revature.actions.ManageActions;
+
 /**
  * Servlet implementation class RegisterServlet
  */
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String mainName = "main.html";
+	private static final String regName = "register.html";
+	private static ManageActions ma = new ManageActions(); 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("doGet of RegisterServlet");
-		RequestDispatcher rd = request.getRequestDispatcher(mainName);
+		RequestDispatcher rd = request.getRequestDispatcher(regName);
 		rd.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("doPost of RegisterServlet");
-		//attempt to register new user using json inside of servlet request?
+		//attempt to register new user sending values
+		boolean success = ma.register(request);
+		if (success) 
+			response.sendRedirect(mainName);
+		//send error back and have user retry
 		
-		//redirect back to home after registered
-		response.sendRedirect(mainName);
 	}
 
 }
