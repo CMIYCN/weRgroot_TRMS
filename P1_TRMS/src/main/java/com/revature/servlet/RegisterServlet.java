@@ -23,7 +23,10 @@ public class RegisterServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("doPost of RegisterServlet");
-		response.sendRedirect("register");
+		//attempt to register new user using json inside of servlet request?
+		
+		//redirect back to home after registered
+		response.sendRedirect(mainName);
 	}
 
 }
