@@ -1,4 +1,4 @@
-package com.revature.DAOImple;
+package com.revature.DAOImpl;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -13,7 +13,7 @@ import com.revature.beans.Employee;
 import com.revature.dao.EmployeeDAO;
 import com.revature.util.ConnFactory;
 
-public class EmployeeDAOImple implements EmployeeDAO {
+public class EmployeeDAOImpl implements EmployeeDAO {
 	public static ConnFactory cf = ConnFactory.getInstance();
 	
 	public List<Employee> getEmployeeList() throws SQLException {
