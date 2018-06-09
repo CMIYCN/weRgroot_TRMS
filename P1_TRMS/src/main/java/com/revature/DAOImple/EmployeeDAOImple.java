@@ -90,8 +90,17 @@ public class EmployeeDAOImple implements EmployeeDAO {
 		conn.close();
 		
 	}
-	public void getEmployeeUsernameAndPassword(String username) throws SQLException {
-		// TODO Auto-generated method stub
+	public String getEmployeeUsernameAndPassword(String username) throws SQLException {
+		Connection conn = cf.getConnection();
+		String sql = "{call GET_PASSWORD(?,?)";
+		CallableStatement call = conn.prepareCall(sql);
+		call.setString(1, username);
+		call.registerOutParameter(2, java.sql.Types.VARCHAR);
+		call.execute();
+		String password = call.getString(2);
+		call.close();
+		conn.close();
+		return password;
 		
 	}
 
