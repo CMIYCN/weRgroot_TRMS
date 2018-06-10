@@ -11,8 +11,12 @@ public class ReimbursementForm {
 	private Float cost;
 	private float projectedReimbursement;
 	private int urgent;
+	private int supervisorApproval;
+	private int departmentApproval;
+	private int bencoApproval;
 	public ReimbursementForm(int formID, int eventID, int emp_ID, String eventTime, String eventDate, String location,
-			String description, Float cost, float projectedReimbursement, int urgent) {
+			String description, Float cost, float projectedReimbursement, int urgent,
+			int supervisorApproval, int departmentApproval, int bencoApproval) {
 		super();
 		this.formID = formID;
 		this.eventID = eventID;
@@ -24,6 +28,10 @@ public class ReimbursementForm {
 		this.cost = cost;
 		this.projectedReimbursement = projectedReimbursement;
 		this.urgent = urgent;
+		this.supervisorApproval = supervisorApproval;
+		this.departmentApproval = departmentApproval;
+		this.bencoApproval = bencoApproval;
+		
 	}
 	public int getFormID() {
 		return formID;
@@ -84,6 +92,24 @@ public class ReimbursementForm {
 	}
 	public void setUrgent(int urgent) {
 		this.urgent = urgent;
+	}
+	public int getSupervisorApproval() {
+		return supervisorApproval;
+	}
+	public void setSupervisorApproval(int supervisorApproval) {
+		this.supervisorApproval = supervisorApproval;
+	}
+	public int getDepartmentApproval() {
+		return departmentApproval;
+	}
+	public void setDepartmentApproval(int departmentApproval) {
+		this.departmentApproval = departmentApproval;
+	}
+	public int getBencoApproval() {
+		return bencoApproval;
+	}
+	public void setBencoApproval(int bencoApproval) {
+		this.bencoApproval = bencoApproval;
 	}
 	
 }
