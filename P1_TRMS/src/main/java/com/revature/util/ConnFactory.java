@@ -32,7 +32,7 @@ public class ConnFactory {
 		//getConnection(url, user, password)
 		try {
 			Properties prop = new Properties();
-			prop.load(new FileReader("db.properties"));
+			prop.load(new FileReader("database.properties"));
 			Class.forName(prop.getProperty("driver"));
 			conn = DriverManager.getConnection(
 					prop.getProperty("url"),
