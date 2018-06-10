@@ -36,15 +36,10 @@ public class ConnFactory {
 		try {
 			InputStream input = sc.getResourceAsStream("/WEB-INF/database.properties");
 			Properties prop = new Properties();
-<<<<<<< HEAD
+
 			prop.load(input);
 			
 			Class.forName("oracle.jdbc.OracleDriver");
-			System.out.println("after class");
-=======
-			prop.load(new FileReader("database.properties"));
-			Class.forName(prop.getProperty("driver"));
->>>>>>> f6b38196b854336d5d5a7881976dce62bd3de3ae
 			conn = DriverManager.getConnection(
 					prop.getProperty("url"),
 					prop.getProperty("usr"), 
