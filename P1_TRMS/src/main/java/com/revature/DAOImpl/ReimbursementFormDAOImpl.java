@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletContext;
+
 import com.revature.beans.Employee;
 import com.revature.beans.ReimbursementForm;
 import com.revature.dao.ReimbursementFormDAO;
@@ -15,9 +17,9 @@ import com.revature.util.ConnFactory;
 
 public class ReimbursementFormDAOImpl implements ReimbursementFormDAO {
 	public static ConnFactory cf = ConnFactory.getInstance();
-	public List<ReimbursementForm> getReimbursementFormList() throws SQLException {
+	public List<ReimbursementForm> getReimbursementFormList(ServletContext sc) throws SQLException {
 		List<ReimbursementForm> reimbursementList = new ArrayList<ReimbursementForm>();
-		Connection conn= cf.getConnection();
+		Connection conn= cf.getConnection(sc);
 		Statement stmt = conn.createStatement();
 		ResultSet rs = stmt.executeQuery("SELECT * FROM REIMBURSEMENTFORM");
 		ReimbursementForm rf;
@@ -32,8 +34,8 @@ public class ReimbursementFormDAOImpl implements ReimbursementFormDAO {
 	}
 
 	public void createReimbursementForm(int formID,int eventID,int empID,String eventTime,
-			String eventDate,String location,String description,Float cost,Float projectedReimbursement,int urgent) {
-		Connection conn = cf.getConnection();
+			String eventDate,String location,String description,Float cost,Float projectedReimbursement,int urgent, ServletContext sc) {
+		Connection conn = cf.getConnection(sc);
 		String[] primaryKeys = new String[1];
 		primaryKeys[0]="FormId";//whatever formID series is
 		String sql = "INSERT INTO REIMBURSEMENT_FORM VALUES(FormID.NEXTVAL,?,?,?,?,?)";
@@ -58,8 +60,8 @@ public class ReimbursementFormDAOImpl implements ReimbursementFormDAO {
 
 	}
 
-	public List<ReimbursementForm> getReimbursementForm(int empID) throws SQLException {
-		Connection conn = cf.getConnection();
+	public List<ReimbursementForm> getReimbursementForm(int empID, ServletContext sc) throws SQLException {
+		Connection conn = cf.getConnection(sc);
 		String sql = "SELECT * FROM REIMBURSEMENT_FORM WHERE EMP_ID = ?";
 		List<ReimbursementForm> reimbursementList = new ArrayList<ReimbursementForm>();
 		PreparedStatement ps = conn.prepareStatement(sql);

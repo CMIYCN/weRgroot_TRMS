@@ -3,10 +3,13 @@ package com.revature.util;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
+
+import javax.servlet.ServletContext;
 
 public class ConnFactory {
 	private static ConnFactory cf = new ConnFactory();
@@ -27,13 +30,16 @@ public class ConnFactory {
 	 * Output:Connection
 	 * Description: Creates a connection to server
 	 */
-	public Connection getConnection() {
+	public Connection getConnection(ServletContext sc) {
 		Connection conn = null;
 		//getConnection(url, user, password)
 		try {
+			InputStream input = sc.getResourceAsStream("/WEB-INF/database.properties");
 			Properties prop = new Properties();
-			prop.load(new FileReader("db.properties"));
-			Class.forName(prop.getProperty("driver"));
+
+			prop.load(input);
+			
+			Class.forName("oracle.jdbc.OracleDriver");
 			conn = DriverManager.getConnection(
 					prop.getProperty("url"),
 					prop.getProperty("usr"), 

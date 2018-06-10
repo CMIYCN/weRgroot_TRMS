@@ -1,6 +1,7 @@
 package com.revature.actions;
 import java.sql.SQLException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import com.revature.DAOImpl.EmployeeDAOImpl;
@@ -12,7 +13,7 @@ public class ManageActions {
 	private static String fullName = "name";
 	EmployeeDAOImpl edi = new EmployeeDAOImpl();
 	
-	public boolean register(HttpServletRequest request) {
+	public boolean register(HttpServletRequest request, ServletContext sc) {
 		String username = request.getParameter(user);
 		String password = request.getParameter(pass);
 		String name = request.getParameter(fullName);
@@ -22,7 +23,7 @@ public class ManageActions {
 			//createEmployee also needs int employeetype and int manager id or some information that 
 			//would allow to find that out
 			try {
-				edi.createEmployee(username, password, name, 0, 0);
+				edi.createEmployee(username, password, name, 0, 0, sc);
 				return true;
 			} catch (SQLException e) {
 				
@@ -31,11 +32,11 @@ public class ManageActions {
 		return false;
 	}
 	
-	public boolean login(HttpServletRequest request) {
+	public boolean login(HttpServletRequest request, ServletContext sc) {
 		String username = request.getParameter(user);
 		String password = request.getParameter(pass);
 		
-		Employee emp = edi.getEmployeeByUsername(username);
+		Employee emp = edi.getEmployeeByUsername(username, sc);
 		if (emp.getPassword().equals(password)) {
 			//save session/set session to current username 
 			System.out.println("login");

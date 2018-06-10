@@ -3,6 +3,7 @@ package com.revature.servlet;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -28,7 +29,8 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("doPost of LoginServlet");
 		//attempt to login sending form fields
-		boolean success = ma.login(request);
+		ServletContext sc = getServletContext();
+		boolean success = ma.login(request, sc);
 		if (success) 
 			response.sendRedirect(menuName);
 		//send error back and have user retry
