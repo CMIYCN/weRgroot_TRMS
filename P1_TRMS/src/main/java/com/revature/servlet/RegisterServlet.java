@@ -29,7 +29,7 @@ public class RegisterServlet extends HttpServlet {
 		boolean success = ma.register(request, getServletContext());
 		if (success) 
 			response.sendRedirect(homeName);
-		}else {
+		else {
 			//send error back and have user retry
 			response.sendRedirect(homeName);
 		}
