@@ -15,7 +15,7 @@ import com.revature.actions.ManageActions;
  */
 public class MenuServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String menuName = "menu.html";
+	private static final String menuName = "employeehome.html";
 	private static final String homeName = "index";
 	private static ManageActions ma = new ManageActions(); 
    
