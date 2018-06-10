@@ -1,8 +1,10 @@
 package com.revature.actions;
+import java.io.IOException;
 import java.sql.SQLException;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.revature.DAOImpl.EmployeeDAOImpl;
@@ -13,6 +15,8 @@ public class ManageActions {
 	private static String pass = "password";
 	private static String fullName = "name";
 	EmployeeDAOImpl edi = new EmployeeDAOImpl();
+	private static final String reimbursementName = "reimbursement-form";
+	private static final String mainName = "home";
 	
 	public boolean register(HttpServletRequest request, ServletContext sc) {
 		String username = request.getParameter(user);
@@ -47,10 +51,22 @@ public class ManageActions {
 		return false;
 	}
 	
-	public void menuOptionSelect(HttpServletRequest request, ServletContext sc) {
+	public void menuOptionSelect(HttpServletRequest request, ServletContext sc, HttpServletResponse response) {
+		String btnNew = request.getParameter("newreimbursement-button");
+		String btnView = request.getParameter("viewreimbursement-button");
 		
-        HttpSession session = request.getSession(false);  
-        String n = (String)session.getAttribute("username"); 
-        System.out.println(n.toString());
+		try {
+			if (btnNew != null)
+				response.sendRedirect(reimbursementName);
+			else
+				response.sendRedirect(mainName);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+//        HttpSession session = request.getSession(false);  
+//        String n = (String)session.getAttribute("username"); 
+//        System.out.println();
 	}
 }
