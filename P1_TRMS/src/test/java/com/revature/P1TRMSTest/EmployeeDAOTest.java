@@ -14,7 +14,7 @@ class EmployeeDAOTest {
 	private static String name = "Bobby";
 	private static int positionType = 1;
 	private static int managerID = 1;
-	private static final EmployeeDAOImpl edi = new EmployeeDAOImpl();
+	private final EmployeeDAOImpl edi = new EmployeeDAOImpl();
 	@Test
 	void testCreateEmployee() throws SQLException {
 		int oldsize = edi.getEmployeeList().size();

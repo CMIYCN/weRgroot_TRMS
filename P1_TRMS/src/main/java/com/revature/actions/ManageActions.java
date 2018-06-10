@@ -38,8 +38,10 @@ public class ManageActions {
 		Employee emp = edi.getEmployeeByUsername(username);
 		if (emp.getPassword().equals(password)) {
 			//save session/set session to current username 
+			System.out.println("login");
 			return true;
 		}
+		System.out.println("bad login");
 		return false;
 	}
 }
