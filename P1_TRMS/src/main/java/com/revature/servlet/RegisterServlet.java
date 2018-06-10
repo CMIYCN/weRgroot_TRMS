@@ -31,7 +31,9 @@ public class RegisterServlet extends HttpServlet {
 		if (success) 
 			response.sendRedirect(homeName);
 		//send error back and have user retry
-		
+		request.setAttribute("message", "Username taken");
+		RequestDispatcher dispatcher = sc.getRequestDispatcher(regName);
+		dispatcher.forward(request, response);
 	}
 
 }
