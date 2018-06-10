@@ -32,10 +32,12 @@ public class ConnFactory {
 		//getConnection(url, user, password)
 		try {
 			Properties prop = new Properties();
-			prop.load(new FileReader("database.properties"));
+			prop.load(new FileReader("db.properties"));
 			Class.forName(prop.getProperty("driver"));
-			conn = DriverManager.getConnection(prop.getProperty("url"),
-					prop.getProperty("usr"), prop.getProperty("password"));
+			conn = DriverManager.getConnection(
+					prop.getProperty("url"),
+					prop.getProperty("usr"), 
+					prop.getProperty("password"));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

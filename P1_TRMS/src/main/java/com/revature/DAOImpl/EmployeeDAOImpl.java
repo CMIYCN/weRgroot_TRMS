@@ -33,22 +33,17 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	}
 	public void createEmployee(String userName,String password, String name, int positionType, int managerID) throws SQLException {
 		Connection conn = cf.getConnection();
-		String[] primaryKeys = new String[1];
-		primaryKeys[0]="EmployeeId";//whatever employeeID series is
-		String sql = "INSERT INTO EMPLOYEE VALUES(EmployeeID.NEXTVAL,?,?,?,?,?)";
-		try {
-		PreparedStatement ps= conn.prepareStatement(sql, primaryKeys);
-		ps.setString(1, userName);
-		ps.setString(2, password);
-		ps.setString(3, name);
-		ps.setInt(4, positionType);
-		ps.setInt(5, managerID);
-		ps.executeUpdate();
-		ps.close();
+		String sql = "{call INSERT_EMPLOYEE(?,?,?,?,?)";
+		
+		CallableStatement call = conn.prepareCall(sql);
+		call.setString(1, userName);
+		call.setString(2, password);
+		call.setString(3, name);
+		call.setInt(4, positionType);
+		call.setInt(5, managerID);
+		call.execute();
+		call.close();
 		conn.close();
-		}catch(SQLException e){
-			e.printStackTrace();
-		}
 	}
 	//working on stored procedure for this.
 	public Employee getEmployeeByUsername(String username) {
