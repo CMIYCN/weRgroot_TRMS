@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Register</title>
+    <title>Employee</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -28,15 +28,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-light bg-light static-top">
       <div class="container">
-        <a class="navbar-brand" href="home">TRMS - Tuition Reimbursement Management System</a>
-        <div class="row">
-			<div class="col-md-6 mx-auto">
-				<a class="btn btn-primary" href="login">Sign In</a>
-			</div>
-			<div class="col-md-6 mx-auto">
-				<a class="btn btn-primary" href="register">Sign Up</a>
-			</div>
-		</div>
+        <a class="navbar-brand" href="home">Tuition Reimbursement Form</a>
       </div>
     </nav>
 
@@ -44,12 +36,15 @@
 		<div class="row">
 			<div class="col-md-6">
 			    <form method="POST">
-    				<input type="text" placeholder="Username" name="username">
-    				<input type="text" placeholder="Password" name="password">
-    				<input type="text" placeholder="Name" name="name">
-    				
-    				
-			    	<input class="btn btn-primary" type="submit" name="register-btn" value="Register">
+                    <input type="text" placeholder="Name" id="name">
+    				<input type="text" placeholder="Event" id="event">
+    				<input type="text" placeholder="Event Time" id="eventtime">
+    				<input type="text" placeholder="Event Date" id="eventdate">
+                    <input type="text" placeholder="Location" id="location">
+                    <input type="text" placeholder="Description" id="description">
+                    <input type="text" placeholder="Reimbursement Amount" id="password">
+                    <input type="text" placeholder="Urgent" id="urgent">
+			    	<input class="btn btn-primary" type="submit" name="submit-btn" value="Submit Form">
 			    </form>
 			</div>
 		</div>
@@ -59,6 +54,6 @@
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  </body>
 
+  </body>
 </html>

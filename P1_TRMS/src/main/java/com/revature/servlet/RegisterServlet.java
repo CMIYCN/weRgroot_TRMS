@@ -28,10 +28,12 @@ public class RegisterServlet extends HttpServlet {
 		//attempt to register new user sending values
 		ServletContext sc = getServletContext();
 		boolean success = ma.register(request, sc);
-		if (success) 
+		if (success) {
 			response.sendRedirect(homeName);
-		//send error back and have user retry
-		response.sendRedirect(homeName);
+		}else {
+			//send error back and have user retry
+			response.sendRedirect(homeName);
+		}
 	}
 
 }
