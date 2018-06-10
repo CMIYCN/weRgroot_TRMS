@@ -3,6 +3,7 @@ import java.sql.SQLException;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import com.revature.DAOImpl.EmployeeDAOImpl;
 import com.revature.beans.Employee;
@@ -38,9 +39,18 @@ public class ManageActions {
 		
 		Employee emp = edi.getEmployeeByUsername(username, sc);
 		if (emp.getPassword().equals(password)) {
-			//save session/set session to current username 
+			HttpSession session = request.getSession();  
+		    session.setAttribute("username", username); 
+		    session.setAttribute("password", password);
 			return true;
 		}
 		return false;
+	}
+	
+	public void menuOptionSelect(HttpServletRequest request, ServletContext sc) {
+		
+        HttpSession session = request.getSession(false);  
+        String n = (String)session.getAttribute("username"); 
+        System.out.println(n.toString());
 	}
 }
