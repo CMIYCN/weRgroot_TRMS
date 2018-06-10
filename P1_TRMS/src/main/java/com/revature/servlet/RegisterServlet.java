@@ -14,7 +14,7 @@ import com.revature.actions.ManageActions;
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String homeName = "index.html";
-	private static final String regName = "register.html";
+	private static final String regName = "register";
 	private static ManageActions ma = new ManageActions(); 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -26,8 +26,7 @@ public class RegisterServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("doPost of RegisterServlet");
 		//attempt to register new user sending values
-		ServletContext sc = getServletContext();
-		boolean success = ma.register(request, sc);
+		boolean success = ma.register(request, getServletContext());
 		if (success) 
 			response.sendRedirect(homeName);
 		//send error back and have user retry
