@@ -51,17 +51,24 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		}
 	}
 	//working on stored procedure for this.
-	public Employee getEmployeeByUsername(String username) throws SQLException {
+	public Employee getEmployeeByUsername(String username) {
 		Connection conn = cf.getConnection();
 		String sql = "SELECT * FROM EMPLOYEE WHERE EMPLOYEE.USERNAME=?";
-		
-		PreparedStatement ps = conn.prepareStatement(sql);
-		ps.setString(1, username);
-		ResultSet rs = ps.executeQuery();
-		Employee e = new Employee(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getInt(4),rs.getString(5),rs.getString(6));
-		rs.close();
-		ps.close();
-		conn.close();
+		Employee e = new Employee();
+		PreparedStatement ps;
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, username);
+			ResultSet rs = ps.executeQuery();
+			e = new Employee(rs.getInt(1),rs.getString(2),rs.getInt(3),rs.getInt(4),rs.getString(5),rs.getString(6));
+			rs.close();
+			ps.close();
+			conn.close();
+			return e;
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		return e;
 	}
 	public void updateEmployee(String oldUserName, String newUserName, String password, String name, int positionType,
