@@ -9,6 +9,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletContext;
+
 import com.revature.beans.Employee;
 import com.revature.dao.EmployeeDAO;
 import com.revature.util.ConnFactory;
@@ -16,9 +18,9 @@ import com.revature.util.ConnFactory;
 public class EmployeeDAOImpl implements EmployeeDAO {
 	public static ConnFactory cf = ConnFactory.getInstance();
 	
-	public List<Employee> getEmployeeList() throws SQLException {
+	public List<Employee> getEmployeeList(ServletContext sc) throws SQLException {
 		List<Employee> employeeList = new ArrayList<Employee>();
-		Connection conn= cf.getConnection();
+		Connection conn= cf.getConnection(sc);
 		Statement stmt = conn.createStatement();
 		ResultSet rs = stmt.executeQuery("SELECT * FROM EMPLOYEE");
 		Employee e;
@@ -31,8 +33,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		conn.close();
 		return employeeList;
 	}
-	public void createEmployee(String userName,String password, String name, int positionType, int managerID) throws SQLException {
-		Connection conn = cf.getConnection();
+	public void createEmployee(String userName,String password, String name, int positionType, int managerID, ServletContext sc) throws SQLException {
+		Connection conn = cf.getConnection(sc);
 		String sql = "{call INSERT_EMPLOYEE(?,?,?,?,?)";
 		
 		CallableStatement call = conn.prepareCall(sql);
@@ -46,8 +48,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		conn.close();
 	}
 	//working on stored procedure for this.
-	public Employee getEmployeeByUsername(String username) {
-		Connection conn = cf.getConnection();
+	public Employee getEmployeeByUsername(String username, ServletContext sc) {
+		Connection conn = cf.getConnection(sc);
 		String sql = "SELECT * FROM EMPLOYEE WHERE EMPLOYEE.USERNAME=?";
 		Employee e = new Employee();
 		PreparedStatement ps;
@@ -67,9 +69,9 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		return e;
 	}
 	public void updateEmployee(String oldUserName, String newUserName, String password, String name, int positionType,
-			int managerID) throws SQLException {
+			int managerID, ServletContext sc) throws SQLException {
 		// TODO Auto-generated method stub
-		Connection conn = cf.getConnection();
+		Connection conn = cf.getConnection(sc);
 		String sql = "{call UPDATE_EMPLOYEE(?,?,?,?,?,?)";
 		
 		CallableStatement call = conn.prepareCall(sql);
@@ -82,8 +84,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		call.execute();
 		conn.close();
 	}
-	public void deleteEmployee(String username) throws SQLException {
-		Connection conn = cf.getConnection();
+	public void deleteEmployee(String username, ServletContext sc) throws SQLException {
+		Connection conn = cf.getConnection(sc);
 		String sql = "{call DELETE_EMPLOYEE(?)";
 		
 		CallableStatement call = conn.prepareCall(sql);
@@ -92,8 +94,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		conn.close();
 		
 	}
-	public String getEmployeeUsernameAndPassword(String username) throws SQLException {
-		Connection conn = cf.getConnection();
+	public String getEmployeeUsernameAndPassword(String username, ServletContext sc) throws SQLException {
+		Connection conn = cf.getConnection(sc);
 		String sql = "{call GET_PASSWORD(?,?)";
 		CallableStatement call = conn.prepareCall(sql);
 		call.setString(1, username);
@@ -105,5 +107,4 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		return password;
 		
 	}
-
 }
