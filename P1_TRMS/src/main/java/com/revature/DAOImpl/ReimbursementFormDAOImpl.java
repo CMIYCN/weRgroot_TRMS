@@ -1,4 +1,4 @@
-package com.revature.DAOImple;
+package com.revature.DAOImpl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,19 +13,21 @@ import com.revature.beans.ReimbursementForm;
 import com.revature.dao.ReimbursementFormDAO;
 import com.revature.util.ConnFactory;
 
-public class ReimbursementFormDAOImple implements ReimbursementFormDAO {
+public class ReimbursementFormDAOImpl implements ReimbursementFormDAO {
 	public static ConnFactory cf = ConnFactory.getInstance();
-	public List<ReimbursementForm> getEmployeeList() throws SQLException {
+	public List<ReimbursementForm> getReimbursementFormList() throws SQLException {
 		List<ReimbursementForm> reimbursementList = new ArrayList<ReimbursementForm>();
 		Connection conn= cf.getConnection();
 		Statement stmt = conn.createStatement();
 		ResultSet rs = stmt.executeQuery("SELECT * FROM REIMBURSEMENTFORM");
-		ReimbursementFrom rf;
+		ReimbursementForm rf;
 		
 		while(rs.next()) {
 			rf = new ReimbursementForm(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getFloat(8),rs.getFloat(9),rs.getInt(10));
-			
+			reimbursementList.add(rf);
 		}
+		rs.close();
+		conn.close();
 		return reimbursementList;
 	}
 
@@ -48,10 +50,32 @@ public class ReimbursementFormDAOImple implements ReimbursementFormDAO {
 		ps.setFloat(8, projectedReimbursement);
 		ps.setInt(9, urgent);
 		ps.executeUpdate();
+		ps.close();
+		conn.close();
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
 
+	}
+
+	public List<ReimbursementForm> getReimbursementForm(int empID) throws SQLException {
+		Connection conn = cf.getConnection();
+		String sql = "SELECT * FROM REIMBURSEMENT_FORM WHERE EMP_ID = ?";
+		List<ReimbursementForm> reimbursementList = new ArrayList<ReimbursementForm>();
+		PreparedStatement ps = conn.prepareStatement(sql);
+		
+		ps.setInt(1, empID);
+		ResultSet rs = ps.executeQuery();
+		ReimbursementForm rf;
+		
+		while(rs.next()) {
+			rf = new ReimbursementForm(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getFloat(8),rs.getFloat(9),rs.getInt(10));
+			reimbursementList.add(rf);
+		}
+		rs.close();
+		conn.close();
+		return reimbursementList;
+		
 	}
 
 }
