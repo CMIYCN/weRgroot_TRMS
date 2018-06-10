@@ -82,4 +82,21 @@ public class ReimbursementFormDAOImpl implements ReimbursementFormDAO {
 		
 	}
 
+	public void updateApproval(int formID, int supervisorApproval, int departmentApproval, int bencoApproval,ServletContext sc)
+			throws SQLException {
+		// TODO Auto-generated method stub
+		Connection conn = cf.getConnection(sc);
+		String sql = "call UPDATE_APPROVAL(?,?,?,?)";
+		PreparedStatement ps;
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, supervisorApproval);
+			ps.setInt(2, departmentApproval);
+			ps.setInt(3, bencoApproval);
+			ps.setInt(4, formID);
+			ps.executeQuery();
+			ps.close();
+			conn.close();
+	}
+	
+
 }
