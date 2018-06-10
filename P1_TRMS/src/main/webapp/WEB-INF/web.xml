@@ -41,4 +41,14 @@
     <servlet-name>MenuServlet</servlet-name>
     <url-pattern>/menu</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ErrorServlet</display-name>
+    <servlet-name>ErrorServlet</servlet-name>
+    <servlet-class>com.revature.servlet.ErrorServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ErrorServlet</servlet-name>
+    <url-pattern>/error</url-pattern>
+  </servlet-mapping>
 </web-app>
