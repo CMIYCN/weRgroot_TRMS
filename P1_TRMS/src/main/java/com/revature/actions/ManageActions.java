@@ -18,16 +18,16 @@ public class ManageActions {
 		String name = request.getParameter(fullName);
 		
 		//check is usernameExists, register new employee account
-		if (edi.getEmployeeByUsername(username) == null) {
+		//if (edi.getEmployeeByUsername(username) == null) {
 			//createEmployee also needs int employeetype and int manager id or some information that 
 			//would allow to find that out
 			try {
-				edi.createEmployee(username, password, name, 0, 1);
+				edi.createEmployee(username, password, name, 0, 0);
 				return true;
 			} catch (SQLException e) {
 				
 			}
-		}
+		//}
 		return false;
 	}
 	
