@@ -14,7 +14,7 @@ import com.revature.actions.ManageActions;
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String homeName = "index.html";
-	private static final String regName = "register";
+	private static final String regName = "register.html";
 	private static ManageActions ma = new ManageActions(); 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
