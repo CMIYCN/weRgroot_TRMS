@@ -28,13 +28,13 @@ public class MenuServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("doPost of MenuServlet");
 		//determine if correct user is logged in via session
-		ma.menuOptionSelect(request, getServletContext());
+		ma.menuOptionSelect(request, getServletContext(), response);
 		//goto a existing reimbursement form
 			//response.sendRedirect(reimbursementName);
 		//create a new reimbursement form
 			//response.sendRedirect(reimbursementName);
 		//logout
-			response.sendRedirect(homeName);
+			//response.sendRedirect(homeName);
 	}
 
 }
