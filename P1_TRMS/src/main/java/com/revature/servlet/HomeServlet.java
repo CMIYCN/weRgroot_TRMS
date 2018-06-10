@@ -8,28 +8,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.revature.actions.ManageActions;
-
-public class RegisterServlet extends HttpServlet {
+public class HomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String homeName = "index.html";
+	private static final String loginName = "login.html";
 	private static final String regName = "register.html";
-	private static ManageActions ma = new ManageActions(); 
+	private static final String homeName = "index.html";
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("doGet of RegisterServlet");
-		RequestDispatcher rd = request.getRequestDispatcher(regName);
+		System.out.println("doGet of HomeServlet");
+		RequestDispatcher rd = request.getRequestDispatcher(homeName);
 		rd.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("doPost of RegisterServlet");
-		//attempt to register new user sending values
-		boolean success = ma.register(request);
-		if (success) 
-			response.sendRedirect(homeName);
-		//send error back and have user retry
-		
+		//if request.login
+			response.sendRedirect(loginName);
+		//else if request.request
+			response.sendRedirect(regName);
 	}
 
 }
