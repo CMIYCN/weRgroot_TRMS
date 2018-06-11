@@ -13,7 +13,7 @@ import com.revature.actions.ManageActions;
 
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static final String homeName = "index";
+	private static final String homeName = "home";
 	private static final String regName = "register.html";
 	private static ManageActions ma = new ManageActions(); 
 
