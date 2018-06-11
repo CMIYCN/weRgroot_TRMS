@@ -32,16 +32,24 @@
       </div>
     </nav>
 
-	<div class="container">
+	<header class="masthead text-white text-center">
+		<div class="overlay"></div>
+		<div class="container">
 		<div class="row">
 			<div class="col-md-6">
 			    <form method="POST">
-			    	<table border="0" align="left">
+			    	<table border="0" align="right">
 			    	<tr>
-			    		<td><input type="text" placeholder="Username" name="username"></td>
+			    		<td>
+							<label>Username: </label>
+						</td>
+			    		<td><input type="text"  name="username" required></td>
 			    	</tr>
 			    	<tr>
-			    		<td><input type="text" placeholder="Password" name="password"></td>
+			    		<td>
+							<label>Password:</label>
+						</td>
+			    		<td><input type="text" name="password" required></td>
 			    	</tr>
 			    		
 			    	<tr>
@@ -52,8 +60,7 @@
 			</div>
 		</div>
 	</div>
-
-
+	</header>
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

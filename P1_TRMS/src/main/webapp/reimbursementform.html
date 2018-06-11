@@ -28,29 +28,80 @@
     <!-- Navigation -->
     <nav class="navbar navbar-light bg-light static-top">
       <div class="container">
-        <a class="navbar-brand" href="home">Tuition Reimbursement Form</a>
+        <a class="navbar-brand" href="menu">Tuition Reimbursement Form</a>
       </div>
     </nav>
 
+<header class="masthead text-white text-center">
+		<div class="overlay"></div>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
 			    <form method="POST">
-                    <input type="text" placeholder="Name" id="name">
-    				<input type="text" placeholder="Event" id="event">
-    				<input type="text" placeholder="Event Time" id="eventtime">
-    				<input type="text" placeholder="Event Date" id="eventdate">
-                    <input type="text" placeholder="Location" id="location">
-                    <input type="text" placeholder="Description" id="description">
-                    <input type="text" placeholder="Reimbursement Amount" id="amount">
-                    <input type="text" placeholder="Cost" id="cost">
-                    <input type="text" placeholder="Urgent" id="urgent">
-			    	<input class="btn btn-primary" type="submit" name="submit-btn" value="Submit Form">
+			    <table border="0" align="center">
+			    	<tr>
+			    		<td>
+							<label>Full Name: </label>
+						</td>
+			    		<td><input type="text" id="name" required></td>
+			    	</tr>
+			    	<tr>
+			    		<td>
+							<label>Event: </label>
+						</td>
+			    		<td><input type="text" id="event" required></td>
+			    	</tr>
+			    	<tr>
+			    		<td>
+							<label>Event Time: </label>
+						</td>
+			    		<td><input type="text" id="eventtime" required></td>
+			    	</tr>
+			    	<tr>
+			    		<td>
+							<label>Event Date: </label>
+						</td>
+			    		<td><input type="text" id="eventdate"></td>
+			    	</tr>
+			    	<tr>
+			    		<td>
+							<label>Event Location: </label>
+						</td>
+			    		<td><input type="text" id="location" required></td>
+			    	</tr>
+			    	<tr>
+			    		<td>
+							<label>Event Description: </label>
+						</td>
+			    		<td><input type="text" id="description" required></td>
+			    	</tr>
+			    	<tr>
+			    		<td>
+							<label>Amount: </label>
+						</td>
+			    		<td><input type="text" id="amount" required></td>
+			    	</tr>
+			    	<tr>
+			    		<td>
+							<label>Cost: </label>
+						</td>
+			    		<td><input type="text" id="cost" required></td>
+			    	</tr>
+			    	<tr>
+			    		<td>
+							<label>Level of Urgency: </label>
+						</td>
+			    		<td><input type="text" id="urgent" required></td>
+			    	</tr>
+			    	<tr>
+			    		<td><input class="btn btn-primary" type="submit" name="submit-btn" value="Submit Form"></td>
+			    	</tr>
+			    </table>
 			    </form>
 			</div>
 		</div>
 	</div>
-
+</header>
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
