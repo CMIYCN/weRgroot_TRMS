@@ -85,10 +85,15 @@ public class ManageActions {
 		String cost = request.getParameter("cost");
 		
 		//get session user id
-		rfai.createReimbursementForm(
-				0, 0, eventTime, eventDate, 
-				location, description, 0F, 
-				0F, 0, servletContext
-		);
+		try {
+			rfai.createReimbursementForm(
+					0, 0, eventTime, eventDate, 
+					location, description, 0F, 
+					0F, 0, 0, 0, 0, servletContext
+			);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
