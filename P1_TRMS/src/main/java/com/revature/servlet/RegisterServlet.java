@@ -32,7 +32,9 @@ public class RegisterServlet extends HttpServlet {
 			response.sendRedirect(homeName);
 		else {
 			//send error back and have user retry
-			response.sendRedirect(errorName);
+			RequestDispatcher rd = request.getRequestDispatcher(errorName);
+			request.setAttribute("message", 1);
+			rd.forward(request, response);
 		}
 	}
 
