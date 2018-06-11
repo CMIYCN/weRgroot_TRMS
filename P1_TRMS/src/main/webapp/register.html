@@ -39,22 +39,41 @@
 		</div>
       </div>
     </nav>
-
+    
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
+				<h1 id="registerError"></h1>
 			    <form method="POST">
-    				<input type="text" placeholder="Username" name="username">
-    				<input type="text" placeholder="Password" name="password">
-    				<input type="text" placeholder="Name" name="name">
-    				
-    				
-			    	<input class="btn btn-primary" type="submit" name="register-btn" value="Register">
+			    	<table border="0" align="left">
+			    		<tr>
+			    			<td>
+			    				<label>Username:</label>
+			    			</td>
+			    			<td><input type="text" name="username" required></td>
+			    		</tr>
+			    		<tr>
+			    			<td>
+			    				<label>Password:</label>
+			    			</td>
+			    			<td><input type="text" name="password" required></td>
+			    		</tr>
+			    		<tr>
+			    			<td>
+			    				<label>Full Name:</label>
+			    			</td>
+			    			<td><input type="text" name="name" required></td>
+			    		</tr>
+			    		<tr>
+			    			<td>
+			    				<input class="btn btn-primary" type="submit" name="register-btn" value="Register">
+			    			</td>
+			    		</tr>
+			    	</table>
 			    </form>
 			</div>
 		</div>
 	</div>
-
 
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
