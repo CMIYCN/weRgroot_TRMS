@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.revature.DAOImpl.EmployeeDAOImpl;
+import com.revature.DAOImpl.ReimbursementFormDAOImpl;
 import com.revature.beans.Employee;
 
 public class ManageActions {
@@ -15,8 +16,10 @@ public class ManageActions {
 	private static String pass = "password";
 	private static String fullName = "name";
 	EmployeeDAOImpl edi = new EmployeeDAOImpl();
+	ReimbursementFormDAOImpl rfai = new ReimbursementFormDAOImpl();
 	private static final String reimbursementName = "reimbursement-form";
 	private static final String mainName = "home";
+	private static final String viewName = "view-reimbursements";
 	
 	public boolean register(HttpServletRequest request, ServletContext sc) {
 		String username = request.getParameter(user);
@@ -43,6 +46,7 @@ public class ManageActions {
 		
 		Employee emp = edi.getEmployeeByUsername(username, sc);
 		if (emp.getPassword().equals(password)) {
+			//set session to current logged in user
 			HttpSession session = request.getSession();  
 		    session.setAttribute("username", username); 
 		    session.setAttribute("password", password);
@@ -58,15 +62,33 @@ public class ManageActions {
 		try {
 			if (btnNew != null)
 				response.sendRedirect(reimbursementName);
+			else if (btnView != null) 
+				response.sendRedirect(viewName);
 			else
 				response.sendRedirect(mainName);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
 		}
 
 //        HttpSession session = request.getSession(false);  
 //        String n = (String)session.getAttribute("username"); 
 //        System.out.println();
+	}
+
+	public void fileReimbursement(HttpServletRequest request, ServletContext servletContext) {
+		//get all parameters from reimbursement form
+		//submit parameters to database
+		String eventTime = request.getParameter("eventtime");
+		String eventDate = request.getParameter("eventdate");
+		String location = request.getParameter("location");
+		String description = request.getParameter("description");
+		String cost = request.getParameter("cost");
+		
+		//get session user id
+		rfai.createReimbursementForm(
+				0, 0, eventTime, eventDate, 
+				location, description, 0F, 
+				0F, 0, servletContext
+		);
 	}
 }
