@@ -29,38 +29,31 @@
     <nav class="navbar navbar-light bg-light static-top">
       <div class="container">
         <a class="navbar-brand" href="home">TRMS - Tuition Reimbursement Management System</a>
+        <div class="row">
+			<div class="col-md-6 mx-auto">
+				<a class="btn btn-primary" href="login">Sign In</a>
+			</div>
+			<div class="col-md-6 mx-auto">
+				<a class="btn btn-primary" href="register">Sign Up</a>
+			</div>
+		</div>
       </div>
     </nav>
 
-	<header class="masthead text-white text-center">
-		<div class="overlay"></div>
-		<div class="container">
+	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
 			    <form method="POST">
-			    	<table border="0" align="right">
-			    	<tr>
-			    		<td>
-							<label>Username: </label>
-						</td>
-			    		<td><input type="text"  name="username" required></td>
-			    	</tr>
-			    	<tr>
-			    		<td>
-							<label>Password:</label>
-						</td>
-			    		<td><input type="text" name="password" required></td>
-			    	</tr>
-			    		
-			    	<tr>
-			    		<td><input class="btn btn-primary" type="submit" name="login-btn" value="Log In"></td>
-			    	</tr>
-			    	</table>
+    				<input type="text" placeholder="Username" name="username">
+    				<input type="text" placeholder="Password" name="password">
+    				
+			    	<input class="btn btn-primary" type="submit" name="login-btn" value="Log In">
 			    </form>
 			</div>
 		</div>
 	</div>
-	</header>
+
+
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
