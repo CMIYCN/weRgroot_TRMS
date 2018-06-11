@@ -28,9 +28,12 @@
     <!-- Navigation -->
     <nav class="navbar navbar-light bg-light static-top">
       <div class="container">
-        <a class="navbar-brand" href="home">Welcome Employee!</a>
+        <a class="navbar-brand" href="menu">Welcome Employee!</a>
         <div class="row">
+        <div class="col-md-6 mx-auto">
+				<a class="btn btn-primary" href="home">Sign Out</a>
 		</div>
+      </div>
       </div>
     </nav>
 
@@ -38,8 +41,14 @@
 		<div class="row">
 			<div class="col-md-6">
 			    <form method="POST">
-			    	<input class="btn btn-primary" type="submit" name="newreimbursement-button" value="File New Reimbursement Form">
-    				<input class="btn btn-primary" type="submit" name="viewreimbursement-button" value="View Pending Reimbursement Form">
+			    <table border="0" align="left">
+			    	<tr>
+			    		<td><input class="btn btn-primary" type="submit" name="newreimbursement-button" value="File New Reimbursement Form"></td>
+			    	</tr>
+			    	<tr>
+			    		<td><input class="btn btn-primary" type="submit" name="viewreimbursement-button" value="View Pending Reimbursement Form"></td>
+			    	</tr>
+			    </table>
 			    </form>
 			</div>
 		</div>
