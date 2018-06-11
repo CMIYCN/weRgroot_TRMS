@@ -37,7 +37,7 @@ public class ReimbursementFormDAOImpl implements ReimbursementFormDAO {
 
 	public void createReimbursementForm(int eventID,int empID,String eventTime,
 			String eventDate,String location,String description,Float cost,Float projectedReimbursement,int urgent,
-			int supervisorApproval,int departmentApproval, int bencoApproval,ServletContext sc) throws SQLException {
+			int supervisorApproval,int departmentApproval, int bencoApproval, ServletContext sc) throws SQLException {
 		Connection conn = cf.getConnection(sc);
 		String sql = "{call CREATE_REIMBURSEMENT_FORM(?,?,?,?,?,?,?,?,?,?,?,?)";
 		

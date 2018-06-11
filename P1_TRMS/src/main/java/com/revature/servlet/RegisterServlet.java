@@ -15,6 +15,7 @@ public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String homeName = "home";
 	private static final String regName = "register.html";
+	private static final String errorName = "error";
 	private static ManageActions ma = new ManageActions(); 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -31,7 +32,7 @@ public class RegisterServlet extends HttpServlet {
 			response.sendRedirect(homeName);
 		else {
 			//send error back and have user retry
-			response.sendRedirect(homeName);
+			response.sendRedirect(errorName);
 		}
 	}
 
