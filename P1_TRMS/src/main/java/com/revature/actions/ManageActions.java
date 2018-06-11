@@ -87,12 +87,11 @@ public class ManageActions {
 		//get session user id
 		try {
 			rfai.createReimbursementForm(
-					0, 0, eventTime, eventDate, 
+					0, 1010, eventTime, eventDate, 
 					location, description, 0F, 
 					0F, 0, 0, 0, 0, servletContext
 			);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
