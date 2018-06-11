@@ -61,4 +61,14 @@
     <servlet-name>ReimbursementServlet</servlet-name>
     <url-pattern>/reimbursement-form</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewReimbursementsServlet</display-name>
+    <servlet-name>ViewReimbursementsServlet</servlet-name>
+    <servlet-class>com.revature.servlet.ViewReimbursementsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewReimbursementsServlet</servlet-name>
+    <url-pattern>/view-reimbursements</url-pattern>
+  </servlet-mapping>
 </web-app>
