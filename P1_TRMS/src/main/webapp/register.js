@@ -3,7 +3,25 @@
 //	var poke1 = getPokemon(pokemonId1);
 //	//loadPokemon(poke1,poke2);
 //}
-//
+
+var xhr = new XMLHttpRequest();
+	//Step 2 function to handle onreadystatechange of response
+xhr.onreadystatechange=function(){
+	console.log("Roll Tide1");
+	//Need both conditionals!
+	if(xhr.readyState == 4){
+		if(xhr.responseType == "document")
+		var data = xhr.response;
+		console.log(data);
+		//console.log(xhr.responseText);
+		//console.log(JSON.parse(xhr.responseText));
+	}
+}
+xhr.open("GET", "login", true);
+//Step 4 - Send request
+xhr.send();
+
+
 //function getJSON(){
 //	console.log("in getJSON");
 //	//var pokemonId1 = pokemonId;
