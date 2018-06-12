@@ -1,6 +1,7 @@
 package com.revature.servlet;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,6 +22,12 @@ public class ViewReimbursementsServlet extends HttpServlet {
 
 		if (ma.sessionActive(request)) {
 			RequestDispatcher rd = request.getRequestDispatcher(viewReimbursementsName);
+//			try {
+//				request.setAttribute("table", ma.getAllReimbursementForms(getServletContext()));
+//			} catch (SQLException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 			rd.forward(request, response);
 		} else {
 			response.sendRedirect(homeName);
