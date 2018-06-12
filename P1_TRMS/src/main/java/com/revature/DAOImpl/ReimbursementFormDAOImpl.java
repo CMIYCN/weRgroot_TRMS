@@ -40,7 +40,6 @@ public class ReimbursementFormDAOImpl implements ReimbursementFormDAO {
 			int supervisorApproval,int departmentApproval, int bencoApproval, ServletContext sc) throws SQLException {
 		Connection conn = cf.getConnection(sc);
 		String sql = "{call CREATE_REIMBURSEMENT_FORM(?,?,?,?,?,?,?,?,?,?,?,?)";
-		
 		CallableStatement call = conn.prepareCall(sql);
 		call.setInt(1, eventID);
 		call.setInt(2, empID);
