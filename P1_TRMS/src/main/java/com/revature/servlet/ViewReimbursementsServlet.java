@@ -23,7 +23,7 @@ public class ViewReimbursementsServlet extends HttpServlet {
 		if (ma.sessionActive(request)) {
 			RequestDispatcher rd = request.getRequestDispatcher(viewReimbursementsName);
 //			try {
-//				request.setAttribute("table", ma.getAllReimbursementForms(getServletContext()));
+//				response.getWriter().write(ma.getStringReimbursementForms(getServletContext()));
 //			} catch (SQLException e) {
 //				// TODO Auto-generated catch block
 //				e.printStackTrace();
