@@ -1,4 +1,4 @@
-var servletName = "view-reimbursements"
+var servletName = "error"
 
 //function getRegError(){
 //	var xhr = new XMLHttpRequest();
@@ -23,7 +23,7 @@ window.onload = function (){
 	xhr.onreadystatechange=function(){
 		//Need both conditionals!
 		if(xhr.readyState == 4 && xhr.status == 200){
-			console.log(xhr.responseType)
+			console.log("Happy times")
 			var data = xhr.responseText;
 			console.log(data);
 		}

@@ -31,11 +31,14 @@ public class ReimbursementFormDAOImpl implements ReimbursementFormDAO {
 		List<ReimbursementForm> reimbursementList = new ArrayList<ReimbursementForm>();
 		Connection conn= cf.getConnection(sc);
 		Statement stmt = conn.createStatement();
-		ResultSet rs = stmt.executeQuery("SELECT * FROM REIMBURSEMENTFORM");
+		ResultSet rs = stmt.executeQuery("SELECT * FROM REIMBURSEMENT_FORM JOIN APPROVALS "
+				+ "ON REIMBURSEMENT_FORM.FORM_ID=APPROVALS.FORM_ID");
 		ReimbursementForm rf;
 		
 		while(rs.next()) {
-			rf = new ReimbursementForm(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getFloat(8),rs.getFloat(9),rs.getInt(10),rs.getInt(12),rs.getInt(13),rs.getInt(14));
+			rf = new ReimbursementForm(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getString(4),
+					rs.getString(5),rs.getString(6),rs.getString(7),rs.getFloat(8),
+					rs.getFloat(9),rs.getInt(10),rs.getInt(11),rs.getInt(12),rs.getInt(13));
 			reimbursementList.add(rf);
 		}
 		rs.close();
