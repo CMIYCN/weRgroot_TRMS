@@ -95,4 +95,20 @@ public class ManageActions {
 			e.printStackTrace();
 		}
 	}
+
+	public void logout(HttpServletRequest request) {
+		HttpSession session=request.getSession();  
+        session.invalidate();
+	}
+
+	public boolean sessionActive(HttpServletRequest request) {
+		HttpSession session=request.getSession(false);  
+        
+		if (session != null){  
+        	return true;
+        }  
+        else{  
+            return false;
+        }  
+	}
 }
