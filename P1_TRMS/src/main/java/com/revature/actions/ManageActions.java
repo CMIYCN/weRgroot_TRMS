@@ -97,13 +97,13 @@ public class ManageActions {
 	}
 
 	public void logout(HttpServletRequest request) {
-		HttpSession session=request.getSession();  
+		HttpSession session = request.getSession();  
         session.invalidate();
 	}
 
 	public boolean sessionActive(HttpServletRequest request) {
-		HttpSession session=request.getSession(false);  
-        
+		HttpSession session = request.getSession(false);  
+        System.out.println(session);
 		if (session != null){  
         	return true;
         }  
