@@ -1,5 +1,12 @@
 package com.revature.DAOImpl;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.sql.Blob;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,6 +17,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletContext;
+
+import org.omg.CORBA.portable.InputStream;
 
 import com.revature.beans.Employee;
 import com.revature.beans.ReimbursementForm;
@@ -133,6 +142,38 @@ public class ReimbursementFormDAOImpl implements ReimbursementFormDAO {
 			ps.executeQuery();
 			ps.close();
 			conn.close();
+	}
+	//Upload file
+	public void addAttachment(String name,String description, File filename, ServletContext sc)throws SQLException, IOException{
+		Connection conn = cf.getConnection(sc);
+		String sql = "INSERT INTO ATTACHMENT_TEST (NAMEN, DESCRIPTION_, FILEN) VALUES (?, ?, ?)";
+	    PreparedStatement stmt = conn.prepareStatement(sql);
+	    stmt.setString(1, name);
+	    stmt.setString(2, description);
+	    FileInputStream   fis = new FileInputStream(filename);
+	    stmt.setBinaryStream(3, fis, (int) filename.length());
+	    stmt.execute();
+	    conn.commit();
+	    fis.close();
+	    conn.close();
+	}
+	public File getAttachment(String name,ServletContext sc) throws SQLException, IOException {
+		Connection conn = cf.getConnection(sc);
+	
+	      String query = "SELECT FILEN FROM ATTACHMENT WHERE NAMEN = ?";
+	      PreparedStatement pstmt = conn.prepareStatement(query);
+	      pstmt.setString(1, name);
+	      ResultSet rs = pstmt.executeQuery();
+	      rs.next();
+	      Blob blob = rs.getBlob("FILEN");
+	      java.io.InputStream in = blob.getBinaryStream();
+	      File output = new File(name);
+	      OutputStream out = new FileOutputStream(output);
+	      byte[] buff = blob.getBytes(1,(int)blob.length());
+	      out.write(buff);
+	      out.close();
+	      // materialize BLOB onto client
+	      return output;
 	}
 	
 
