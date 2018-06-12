@@ -17,5 +17,5 @@ xhr.send();
 
 window.onload = function (){
 	console.log("in onLoad");
-	document.getElementById("view-btn").addEventListener("click", getReimbursements, false);
+	//document.getElementById("view-btn").addEventListener("click", getReimbursements, false);
 }
