@@ -1,6 +1,7 @@
 package com.revature.actions;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import com.revature.DAOImpl.EmployeeDAOImpl;
 import com.revature.DAOImpl.ReimbursementFormDAOImpl;
 import com.revature.beans.Employee;
+import com.revature.beans.ReimbursementForm;
 
 public class ManageActions {
 	private static String user = "username";
@@ -83,7 +85,7 @@ public class ManageActions {
 		String location = request.getParameter("location");
 		String description = request.getParameter("description");
 		String cost = request.getParameter("cost");
-		
+
 		//get session user id
 		try {
 			rfai.createReimbursementForm(
@@ -95,4 +97,32 @@ public class ManageActions {
 			e.printStackTrace();
 		}
 	}
+
+	public void logout(HttpServletRequest request) {
+		HttpSession session = request.getSession();  
+        session.invalidate();
+	}
+
+	public boolean sessionActive(HttpServletRequest request) {
+		HttpSession session = request.getSession(false);  
+        System.out.println(session);
+		if (session != null){  
+        	return true;
+        }  
+        else{  
+            return false;
+        }  
+	}
+	
+//	public List<String> getStringReimbursementForm(ServletContext sc) throws SQLException{
+//		List<ReimbursementForm> reimburseForms = rfai.getReimbursementFormList(sc);
+//		String listString = "";
+//		for (ReimbursementForm s : reimburseForms)
+//		{
+//		    listString += s + "\t";
+//		}
+//
+//		return reimburseForms;
+//		
+//	}
 }

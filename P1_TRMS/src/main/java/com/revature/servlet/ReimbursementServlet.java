@@ -15,16 +15,21 @@ public class ReimbursementServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String formName = "reimbursementform.html";
 	private static final String menuName = "menu";
+	private static final String homeName = "home";
 	private static ManageActions ma = new ManageActions();
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("doGet of MenuServlet");
-		RequestDispatcher rd = request.getRequestDispatcher(formName);
-		rd.forward(request, response);
+
+		if (ma.sessionActive(request)) {
+			RequestDispatcher rd = request.getRequestDispatcher(formName);
+			rd.forward(request, response);
+		} else {
+			response.sendRedirect(homeName);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//send to fileReimbursement form
 		ma.fileReimbursement(request, getServletContext());
 		response.sendRedirect(menuName);
 	}
