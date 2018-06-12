@@ -116,7 +116,11 @@ public class ManageActions {
 	
 	public List<ReimbursementForm> getStringReimbursementForms(ServletContext sc) throws SQLException{
 		List<ReimbursementForm> reimburseForms = rfai.getReimbursementFormList(sc);
-		System.out.println(reimburseForms);
 		return reimburseForms;
+	}
+	
+	public ReimbursementForm getAReimbursementForm(int formID,ServletContext sc) throws SQLException{
+		ReimbursementForm rf = rfai.getForm(formID, sc);
+		return rf;
 	}
 }
