@@ -114,15 +114,16 @@ public class ManageActions {
         }  
 	}
 	
-//	public List<String> getStringReimbursementForm(ServletContext sc) throws SQLException{
+//	public String getStringReimbursementForms(ServletContext sc) throws SQLException{
 //		List<ReimbursementForm> reimburseForms = rfai.getReimbursementFormList(sc);
 //		String listString = "";
 //		for (ReimbursementForm s : reimburseForms)
 //		{
-//		    listString += s + "\t";
+//			int id = s.getFormID();
+//		    listString += id + "\t";
 //		}
 //
-//		return reimburseForms;
+//		return listString;
 //		
 //	}
 }
