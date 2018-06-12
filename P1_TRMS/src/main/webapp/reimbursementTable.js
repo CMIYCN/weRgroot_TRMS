@@ -1,8 +1,8 @@
 var servletName = "getForms"
 
 function displayData(data){
-	var tbl = document.getElementById("reimburse-tbl");
-	var list = ["formID","eventID","empID","cost"];
+	var tbl = document.getElementById("rmTable");
+	var list = ["formID","eventID","emp_ID","cost"];
 	for(d in data){
 		var row = document.createElement("tr");
 		list.forEach(function(field){
