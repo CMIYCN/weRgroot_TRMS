@@ -43,13 +43,13 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>ErrorServlet</display-name>
-    <servlet-name>ErrorServlet</servlet-name>
-    <servlet-class>com.revature.servlet.ErrorServlet</servlet-class>
+    <display-name>GetFormsServlet</display-name>
+    <servlet-name>GetFormsServlet</servlet-name>
+    <servlet-class>com.revature.servlet.GetFormsServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ErrorServlet</servlet-name>
-    <url-pattern>/error</url-pattern>
+    <servlet-name>GetFormsServlet</servlet-name>
+    <url-pattern>/getForms</url-pattern>
   </servlet-mapping>
   <servlet>
     <description></description>
