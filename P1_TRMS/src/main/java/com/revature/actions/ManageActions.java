@@ -83,7 +83,7 @@ public class ManageActions {
 		String location = request.getParameter("location");
 		String description = request.getParameter("description");
 		String cost = request.getParameter("cost");
-		
+
 		//get session user id
 		try {
 			rfai.createReimbursementForm(

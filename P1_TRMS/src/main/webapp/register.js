@@ -1,26 +1,32 @@
-//function firstStep(){
-//	var pokemonId1 = document.getElementById("pokeId1").value;
-//	var poke1 = getPokemon(pokemonId1);
-//	//loadPokemon(poke1,poke2);
-//}
+var errorPage = "error";
+var errorField = "registerError";
 
-var xhr = new XMLHttpRequest();
-	//Step 2 function to handle onreadystatechange of response
-xhr.onreadystatechange=function(){
-	console.log("Roll Tide1");
-	//Need both conditionals!
-	if(xhr.readyState == 4){
-		if(xhr.responseType == "document")
-		var data = xhr.response;
-		console.log(data);
-		//console.log(xhr.responseText);
-		//console.log(JSON.parse(xhr.responseText));
+function getRegError(){
+	var xhr = new XMLHttpRequest();
+		//Step 2 function to handle onreadystatechange of response
+	xhr.onreadystatechange=function(){
+		console.log("Roll Tide1");
+		//Need both conditionals!
+		if(xhr.readyState == 4 && xhr.status == 100){
+			var errorFlag = JSON.parse(xhr.responseText);
+			alert(errorFlag);
+			addErrorMessage(errorFlag);
+		}
 	}
-}
-xhr.open("GET", "login", true);
-//Step 4 - Send request
-xhr.send();
+	
+	xhr.open("GET", "error", true);
+	//Step 4 - Send request
+	xhr.send();
+};
 
+function addErrorMessage(errorFlag){
+	switch(errorFlag){
+		case 0:
+			var errorElement = document.getElementById(errorField);
+			errorElement.innerHTML="Please try again.";
+			break;
+	}
+};
 
 //function getJSON(){
 //	console.log("in getJSON");
@@ -40,7 +46,7 @@ xhr.send();
 //	//Step 4 - Send request
 //	xhr.send();
 //}
-//window.onload = function (){
-//	console.log("in onLoad");
-//	document.getElementsByName("register-btn")[0].addEventListener("click", getJSON, false);
-//}
+window.onload = function (){
+	console.log("in onLoad");
+	document.getElementsByName("register-btn")[0].addEventListener("click", getRegError, false);
+}
