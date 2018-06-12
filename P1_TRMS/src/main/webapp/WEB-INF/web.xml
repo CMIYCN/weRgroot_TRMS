@@ -81,4 +81,14 @@
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/logout</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewSpecificReimbursementServlet</display-name>
+    <servlet-name>ViewSpecificReimbursementServlet</servlet-name>
+    <servlet-class>com.revature.servlet.ViewSpecificReimbursementServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewSpecificReimbursementServlet</servlet-name>
+    <url-pattern>/view</url-pattern>
+  </servlet-mapping>
 </web-app>
