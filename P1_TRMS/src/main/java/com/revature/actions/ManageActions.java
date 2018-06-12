@@ -105,7 +105,7 @@ public class ManageActions {
 
 	public boolean sessionActive(HttpServletRequest request) {
 		HttpSession session = request.getSession(false);  
-        System.out.println(session);
+
 		if (session != null){  
         	return true;
         }  
