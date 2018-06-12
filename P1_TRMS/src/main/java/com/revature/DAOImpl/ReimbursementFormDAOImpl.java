@@ -171,7 +171,6 @@ public class ReimbursementFormDAOImpl implements ReimbursementFormDAO {
 	      byte[] buff = blob.getBytes(1,(int)blob.length());
 	      out.write(buff);
 	      out.close();
-	      // materialize BLOB onto client
 	      return output;
 	}
 	
