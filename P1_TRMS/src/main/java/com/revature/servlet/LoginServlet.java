@@ -12,13 +12,11 @@ import javax.servlet.http.HttpSession;
 
 import com.revature.actions.ManageActions;
 
-/**
- * Servlet implementation class LoginServlet
- */
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String loginName = "login.html";
 	private static final String menuName = "menu";
+	private static final String homeName = "home";
 	private static ManageActions ma = new ManageActions(); 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -33,9 +31,10 @@ public class LoginServlet extends HttpServlet {
 		boolean success = ma.login(request, getServletContext());
 		if (success) {
 			response.sendRedirect(menuName);
+		} else {
+			//send error back and have user retry
+			response.sendRedirect(homeName);
 		}
-		//send error back and have user retry
-		
 	}
 
 }

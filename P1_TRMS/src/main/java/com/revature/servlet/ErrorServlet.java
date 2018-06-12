@@ -14,8 +14,7 @@ public class ErrorServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("doGet of ErrorServlet");
-		//attach message
-		response.sendError(100, "Hi there");
+		//we have message in request
 		
 		//go to register page with error
 		RequestDispatcher rd = request.getRequestDispatcher(regName);
