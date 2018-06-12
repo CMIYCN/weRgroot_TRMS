@@ -3,7 +3,7 @@ package com.revature.beans;
 public class ReimbursementForm {
 	private int formID;
 	private int eventID;
-	private int emp_ID;
+	private int empID;
 	private String eventTime;
 	private String eventDate;
 	private String location;
@@ -14,13 +14,13 @@ public class ReimbursementForm {
 	private int supervisorApproval;
 	private int departmentApproval;
 	private int bencoApproval;
-	public ReimbursementForm(int formID, int eventID, int emp_ID, String eventTime, String eventDate, String location,
+	public ReimbursementForm(int formID, int eventID, int empID, String eventTime, String eventDate, String location,
 			String description, Float cost, float projectedReimbursement, int urgent,
 			int supervisorApproval, int departmentApproval, int bencoApproval) {
 		super();
 		this.formID = formID;
 		this.eventID = eventID;
-		this.emp_ID = emp_ID;
+		this.empID = empID;
 		this.eventTime = eventTime;
 		this.eventDate = eventDate;
 		this.location = location;
@@ -45,11 +45,11 @@ public class ReimbursementForm {
 	public void setEventID(int eventID) {
 		this.eventID = eventID;
 	}
-	public int getEmp_ID() {
-		return emp_ID;
+	public int getEmpID() {
+		return empID;
 	}
-	public void setEmp_ID(int emp_ID) {
-		this.emp_ID = emp_ID;
+	public void setEmpID(int empID) {
+		this.empID = empID;
 	}
 	public String getEventTime() {
 		return eventTime;
