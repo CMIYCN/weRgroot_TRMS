@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.revature.actions.ManageActions;
 
-public class ErrorServlet extends HttpServlet {
+public class GetFormsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String regName = "register";
 	private static ManageActions ma = new ManageActions();
@@ -21,7 +21,6 @@ public class ErrorServlet extends HttpServlet {
 		//we have message in request
 		Gson gson = new Gson();
 		try {
-			System.out.println(ma.getStringReimbursementForms(getServletContext()));
 			response.getWriter().write(gson.toJson(ma.getStringReimbursementForms(getServletContext())));
 			response.flushBuffer();
 		} catch (SQLException e) {

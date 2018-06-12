@@ -1,4 +1,4 @@
-var servletName = "error"
+var servletName = "getForms"
 
 //function getRegError(){
 //	var xhr = new XMLHttpRequest();
@@ -15,7 +15,23 @@ var servletName = "error"
 //	//Step 4 - Send request
 //	xhr.send();
 //};
+function displayData(data){
+	var tbl = document.getElementById("reimburse-tbl");
+	var list = ["formID","eventID","emp_ID","cost"];
+	for(d in data){
+		var row = document.createElement("tr");
+		list.forEach(function(field){
+			console.log(field);
+			var cell = document.createElement("td");
+			var text = document.createTextNode(data[d][field]);
+			cell.appendChild(text);
+			row.appendChild(cell);
+		})
+		tbl.appendChild(row);
+	}
+}
 
+	
 window.onload = function (){
 	console.log("in onLoad");
 	var xhr = new XMLHttpRequest();
@@ -23,9 +39,8 @@ window.onload = function (){
 	xhr.onreadystatechange=function(){
 		//Need both conditionals!
 		if(xhr.readyState == 4 && xhr.status == 200){
-			console.log("Happy times")
-			var data = xhr.responseText;
-			console.log(data);
+			var data = JSON.parse(xhr.responseText);
+			displayData(data);
 		}
 	}
 	

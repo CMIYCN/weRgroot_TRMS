@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.revature.actions.ManageActions;
 
 public class ViewReimbursementsServlet extends HttpServlet {
@@ -22,12 +23,6 @@ public class ViewReimbursementsServlet extends HttpServlet {
 
 		if (ma.sessionActive(request)) {
 			RequestDispatcher rd = request.getRequestDispatcher(viewReimbursementsName);
-//			try {
-//				response.getWriter().write(ma.getStringReimbursementForms(getServletContext()));
-//			} catch (SQLException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
 			rd.forward(request, response);
 		} else {
 			response.sendRedirect(homeName);
