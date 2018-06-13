@@ -187,7 +187,7 @@ public class ReimbursementFormDAOImpl implements ReimbursementFormDAO {
 	//APPROVAL FOR BENCO HEAD BY JUST FORM ID
 		public void bencoApproval(int formID,ServletContext sc) throws SQLException {
 			Connection conn = cf.getConnection(sc);
-			String sql = "call DEPARTMENT_APPROVAL(?)";
+			String sql = "call BENCO_APPROVAL(?)";
 			PreparedStatement ps;
 				ps = conn.prepareStatement(sql);
 				ps.setInt(1, formID);
