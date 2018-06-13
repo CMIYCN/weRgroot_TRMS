@@ -40,6 +40,7 @@ public class ReimbursementFormDAOImpl implements ReimbursementFormDAO {
 					rs.getString(5),rs.getString(6),rs.getString(7),rs.getFloat(8),
 					rs.getFloat(9),rs.getInt(10),rs.getInt(12),rs.getInt(13),rs.getInt(14));
 			reimbursementList.add(rf);
+			System.out.println(rs.getInt(11));
 		}
 		rs.close();
 		conn.close();
@@ -109,6 +110,7 @@ public class ReimbursementFormDAOImpl implements ReimbursementFormDAO {
 					,rs.getInt(12),rs.getInt(13),rs.getInt(14));
 			reimbursementList.add(rf);
 		}
+		System.out.println(reimbursementList);
 		rs.close();
 		conn.close();
 		return reimbursementList;

@@ -127,4 +127,24 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		conn.close();
 		return reimbursementLeft;
 	}
+	//enters a passing grade for the employee grade
+	public void enterPassingGrade(int formID,ServletContext sc) throws SQLException {
+		Connection conn = cf.getConnection(sc);
+		String sql = "{call ENTER_PASS(?)";
+		CallableStatement call = conn.prepareCall(sql);
+		call.setInt(1, formID);
+		call.execute();
+		call.close();
+		conn.close();
+	}
+	//ENTER FAILING GRADE FOR EMPLOYEE GRADE
+	public void enterFailingGrade(int formID,ServletContext sc) throws SQLException {
+		Connection conn = cf.getConnection(sc);
+		String sql = "{call ENTER_FAIL(?)";
+		CallableStatement call = conn.prepareCall(sql);
+		call.setInt(1, formID);
+		call.execute();
+		call.close();
+		conn.close();
+	}
 }
