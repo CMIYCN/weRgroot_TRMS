@@ -17,7 +17,7 @@ public class ManagerServlet extends HttpServlet {
 	private static ManageActions ma = new ManageActions();
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("doGet of MangerServlet");
+		System.out.println("doGet of ManagerServlet");
 
 		if (ma.sessionActive(request)) {
 			RequestDispatcher rd = request.getRequestDispatcher(managerName);
@@ -28,7 +28,7 @@ public class ManagerServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("doPost of MenuServlet");
+		System.out.println("doPost of ManagerServlet");
 		ma.menuOptionSelect(request, getServletContext(), response);
 	}
 }

@@ -21,7 +21,7 @@ public class GetFormsServlet extends HttpServlet {
 		//we have message in request
 		Gson gson = new Gson();
 		try {
-			response.getWriter().write(gson.toJson(ma.getStringReimbursementForms(getServletContext())));
+			response.getWriter().write(gson.toJson(ma.getStringReimbursementForms(getServletContext(), request)));
 			response.flushBuffer();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
