@@ -2,7 +2,6 @@ var servletName = "getForms";
 
 function displayData(data,url){
 	var formID = parseInt(url.split("=")[1]);
-	console.log(formID);
 	var row = document.getElementById("rmRow");
 	var list = ["formID","eventID","empID","eventTime", "eventDate","location","description","cost","projectedReimbursement","urgent"];
 	for(d in data){
