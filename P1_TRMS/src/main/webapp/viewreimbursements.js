@@ -60,7 +60,6 @@ window.onload = function (){
 			displayData(data);
 		}
 	}
-	
 	xhr.open("GET", "getForms", true);
 	//Step 4 - Send request
 	xhr.send();
