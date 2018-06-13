@@ -22,6 +22,8 @@ public class ViewReimbursementsServlet extends HttpServlet {
 		System.out.println("doGet of viewReimbursementsServlet");
 
 		if (ma.sessionActive(request)) {
+			//check parameter for which version to show
+			//manager or employee pending tables
 			RequestDispatcher rd = request.getRequestDispatcher(viewReimbursementsName);
 			rd.forward(request, response);
 		} else {

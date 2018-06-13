@@ -111,4 +111,14 @@
     <servlet-name>ManagerServlet</servlet-name>
     <url-pattern>/manager</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EmployeeFormsServlet</display-name>
+    <servlet-name>EmployeeFormsServlet</servlet-name>
+    <servlet-class>com.revature.servlet.EmployeeFormsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EmployeeFormsServlet</servlet-name>
+    <url-pattern>/employee-forms</url-pattern>
+  </servlet-mapping>
 </web-app>

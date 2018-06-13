@@ -115,8 +115,15 @@ public class ManageActions {
         }  
 	}
 	
-	public List<ReimbursementForm> getStringReimbursementForms(ServletContext sc) throws SQLException{
-		List<ReimbursementForm> reimburseForms = rfai.getReimbursementFormList(sc);
+	public List<ReimbursementForm> getStringReimbursementForms(ServletContext sc, HttpServletRequest request) throws SQLException{
+		Employee emp = edi.getEmployeeByUsername(request.getSession(false).getAttribute("username").toString(), sc);
+		List<ReimbursementForm> reimburseForms;
+		
+		if (emp.getPositionID() == 0)
+			reimburseForms = rfai.getReimbursementForm(emp.getEmpID(), sc);
+		else
+			reimburseForms = rfai.getReimbursementFormList(sc);
+
 		return reimburseForms;
 	}
 	
