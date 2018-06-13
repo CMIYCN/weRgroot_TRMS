@@ -101,4 +101,14 @@
     <servlet-name>GetFormServlet</servlet-name>
     <url-pattern>/get-form</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ManagerServlet</display-name>
+    <servlet-name>ManagerServlet</servlet-name>
+    <servlet-class>com.revature.servlet.ManagerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ManagerServlet</servlet-name>
+    <url-pattern>/manager</url-pattern>
+  </servlet-mapping>
 </web-app>

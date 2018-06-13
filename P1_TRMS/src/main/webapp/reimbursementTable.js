@@ -1,4 +1,4 @@
-var servletName = "getForms"
+var servletName = "getForms";
 
 function displayData(data,url){
 	var formID = parseInt(url.split("=")[1]);
@@ -6,6 +6,7 @@ function displayData(data,url){
 	var row = document.getElementById("rmRow");
 	var list = ["formID","eventID","empID","eventTime", "eventDate","location","description","cost","projectedReimbursement","urgent"];
 	for(d in data){
+		console.log(data[d]);
 		if(data[d].formID === formID){
 			list.forEach(function(field){
 				var cell = document.createElement("td");
