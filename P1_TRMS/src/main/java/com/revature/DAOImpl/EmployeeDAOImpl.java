@@ -115,4 +115,17 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		return password;
 		
 	}
+	///returns the reimbursement that employee can still recieve
+	public Float getReimbursementLeft(int empID,ServletContext sc)throws SQLException{
+		Connection conn = cf.getConnection(sc);
+		String sql = "{call REIMBURSEMENT_LEFT(?,?)";
+		CallableStatement call = conn.prepareCall(sql);
+		call.setInt(1, empID);
+		call.registerOutParameter(2, java.sql.Types.FLOAT);
+		call.execute();
+		Float reimbursementLeft = call.getFloat(2);
+		call.close();
+		conn.close();
+		return reimbursementLeft;
+	}
 }
