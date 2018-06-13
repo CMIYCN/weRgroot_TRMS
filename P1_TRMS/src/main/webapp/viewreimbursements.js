@@ -12,19 +12,19 @@ function displayData(){
 				tbl.appendChild(row);
 				break;
 			case 1:
-				if(!tableData[d].supervisorApproval){
+				if(tableData[d].supervisorApproval == 0){
 					row = addRow(d, list);
 					tbl.appendChild(row);
 				}
 				break;
 			case 2:
-				if(!tableData[d].departmentApproval){
+				if(!tableData[d].departmentApproval == 0){
 					row = addRow(d, list);
 					tbl.appendChild(row);
 				}
 				break;
 			case 3:
-				if(!tableData[d].bencoApproval){
+				if(!tableData[d].bencoApproval == 0){
 					row = addRow(d, list);
 					tbl.appendChild(row);
 				}
