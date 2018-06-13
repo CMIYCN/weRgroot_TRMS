@@ -32,5 +32,5 @@ function addErrorMessage(errorFlag){
 
 window.onload = function (){
 	console.log("in onLoad");
-	document.getElementsByName("login-btn")[0].addEventListener("click", getLoginError, false);
+	//document.getElementsByName("login-btn")[0].addEventListener("click", getLoginError, false);
 }

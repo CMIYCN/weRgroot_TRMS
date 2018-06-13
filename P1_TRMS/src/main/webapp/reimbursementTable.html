@@ -60,8 +60,9 @@ tr:nth-child(even) {
     <br>
     
 	<br>
-<table id="rmTable" class="center">
+<table class="center">
   <tr>
+  	<th>Approve/Deny</th>
     <th>Form ID</th>
     <th>Event ID</th>
     <th>Employee ID</th>
@@ -72,22 +73,11 @@ tr:nth-child(even) {
     <th>Event Cost</th>
     <th>Amount Offered</th>
     <th>How Urgent?</th>
-    <th>Approve/Deny</th>
   </tr>
-  <tr>
-  	<td></td>
-  	<td></td>
-  	<td></td>
-  	<td></td>
-  	<td></td>
-  	<td></td>
-  	<td></td>
-  	<td></td>
-  	<td></td>
-  	<td></td>
-  	<td>
-  		<input class="btn btn-primary" type="submit" name="approve-btn" value="Approve" style="width:120px;">
-  		<input class="btn btn-primary" type="submit" name="deny-btn" value="Deny" style="width:120px;">
+  <tr id="rmRow">
+   	<td>
+ 		<form method="POST"><input class="btn btn-primary" type="submit" name="approve-btn" value="Approve" style="width:120px;">
+ 		<input class="btn btn-primary" type="submit" name="deny-btn" value="Deny" style="width:120px;"></form>
   	</td>
   </tr>
 </table>
