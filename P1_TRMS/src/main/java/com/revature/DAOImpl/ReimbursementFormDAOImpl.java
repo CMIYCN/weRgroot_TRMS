@@ -132,42 +132,6 @@ public class ReimbursementFormDAOImpl implements ReimbursementFormDAO {
 			ps.close();
 			conn.close();
 	}
-	//supervisor Approval
-	public void setSuppervisorApproval(int formID, int supervisorApproval,ServletContext sc)throws SQLException {
-		Connection conn = cf.getConnection(sc);
-		String sql = "call SET_SUPERVISOR_APPROVAL(?,?)";
-		PreparedStatement ps;
-			ps = conn.prepareStatement(sql);
-			ps.setInt(1, supervisorApproval);
-			ps.setInt(2, formID);
-			ps.executeQuery();
-			ps.close();
-			conn.close();
-	}
-	//DEPARTMENT HEAD APPROVAL
-	public void setDepartmentHeadApproval(int formID, int departmentHead,ServletContext sc)throws SQLException {
-		Connection conn = cf.getConnection(sc);
-		String sql = "call SET_DEPARTMENT_APPROVAL(?,?)";
-		PreparedStatement ps;
-			ps = conn.prepareStatement(sql);
-			ps.setInt(1, departmentHead);
-			ps.setInt(2, formID);
-			ps.executeQuery();
-			ps.close();
-			conn.close();
-	}
-	//SET BENCO APPROVAL
-	public void setBencoApproval(int formID, int bencoApproval,ServletContext sc)throws SQLException {
-		Connection conn = cf.getConnection(sc);
-		String sql = "call SET_BENCO_APPROVAL(?,?)";
-		PreparedStatement ps;
-			ps = conn.prepareStatement(sql);
-			ps.setInt(1, bencoApproval);
-			ps.setInt(2, formID);
-			ps.executeQuery();
-			ps.close();
-			conn.close();
-	}
 	//Upload file
 	public void addAttachment(String name,String description, File filename, ServletContext sc)throws SQLException, IOException{
 		Connection conn = cf.getConnection(sc);
@@ -224,7 +188,7 @@ public class ReimbursementFormDAOImpl implements ReimbursementFormDAO {
 	//APPROVAL FOR BENCO HEAD BY JUST FORM ID
 		public void bencoApproval(int formID,ServletContext sc) throws SQLException {
 			Connection conn = cf.getConnection(sc);
-			String sql = "call DEPARTMENT_APPROVAL(?)";
+			String sql = "call BENCO_APPROVAL(?)";
 			PreparedStatement ps;
 				ps = conn.prepareStatement(sql);
 				ps.setInt(1, formID);
