@@ -85,7 +85,7 @@ public class ManageActions {
 		String eventDate = request.getParameter("eventdate");
 		String location = request.getParameter("location");
 		String description = request.getParameter("description");
-		String cost = request.getParameter("cost");
+		Float cost = Float.parseFloat(request.getParameter("cost"));
 
 		//get session user id
 		try {
@@ -93,7 +93,7 @@ public class ManageActions {
 			int id = emp.getEmpID();
 			rfai.createReimbursementForm(
 					0, id, eventTime, eventDate, 
-					location, description, 0F, 
+					location, description, cost, 
 					0F, 0, 0, 0, 0, servletContext
 			);
 		} catch (SQLException e) {
@@ -132,5 +132,49 @@ public class ManageActions {
 	public ReimbursementForm getAReimbursementForm(int formID,ServletContext sc) throws SQLException{
 		ReimbursementForm rf = rfai.getForm(formID, sc);
 		return rf;
+	}
+
+	public void approve(ServletContext sc, HttpServletRequest request, int formID) throws SQLException {
+		Employee emp = edi.getEmployeeByUsername(request.getSession(false).getAttribute("username").toString(), sc);
+		
+		switch (emp.getPositionID()) {
+			case 1:
+				//direct
+				rfai.supervisorApproval(formID, sc);
+				break;
+			case 2:
+				//depart
+				rfai.departmentApproval(formID, sc);
+				break;
+			case 3:
+				//benco
+				rfai.bencoApproval(formID, sc);
+				break;
+			case 4:
+				//ceo
+				break;
+		}
+	}
+
+	public void deny(ServletContext sc, HttpServletRequest request, int formID) throws SQLException {
+		Employee emp = edi.getEmployeeByUsername(request.getSession(false).getAttribute("username").toString(), sc);
+		
+		switch (emp.getPositionID()) {
+			case 1:
+				//direct
+				rfai.supervisorDENIAL(formID, "Because I said so.", sc);
+				break;
+			case 2:
+				//depart
+				rfai.departmentDenial(formID, "Because I said so.", sc);
+				break;
+			case 3:
+				//benco
+				rfai.bencoDenial(formID, "Because I said so.", sc);
+				break;
+			case 4:
+				//ceo
+				break;
+		}
 	}
 }

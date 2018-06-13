@@ -15,6 +15,14 @@ function displayData(data,url){
 			})
 		}
 	}
+	
+	//add formID to form 
+	var form = document.getElementById("form");
+	var cell = document.createElement("input");
+	cell.style.display = "none";
+	cell.setAttribute("name", "formID");
+	cell.setAttribute("value", data[0].formID);
+	form.appendChild(cell);
 }
 
 	
