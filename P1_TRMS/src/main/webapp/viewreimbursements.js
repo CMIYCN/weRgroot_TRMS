@@ -9,24 +9,27 @@ function displayData(){
 		switch(positionType){
 			case 0:
 				row = addRow(d, list);
+				tbl.appendChild(row);
 				break;
 			case 1:
 				if(!tableData[d].supervisorApproval){
 					row = addRow(d, list);
+					tbl.appendChild(row);
 				}
 				break;
 			case 2:
 				if(!tableData[d].departmentApproval){
 					row = addRow(d, list);
+					tbl.appendChild(row);
 				}
 				break;
 			case 3:
 				if(!tableData[d].bencoApproval){
 					row = addRow(d, list);
+					tbl.appendChild(row);
 				}
 				break;
 		}
-		tbl.appendChild(row);
 	}
 }
 
@@ -63,7 +66,6 @@ function getPosition(){
 		if(xhrPosition.readyState == 4 && xhrPosition.status == 200){
 			count++;
 			positionType = JSON.parse(xhrPosition.responseText);
-			console.log(count);
 			if(count===2){
 				displayData();
 			}
@@ -84,7 +86,6 @@ window.onload = function (){
 		if(xhr.readyState == 4 && xhr.status == 200){
 			count++;
 			tableData = JSON.parse(xhr.responseText);
-			console.log(count);
 			if(count===2){
 				displayData();
 			}
