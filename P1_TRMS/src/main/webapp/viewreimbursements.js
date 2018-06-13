@@ -75,7 +75,7 @@ function addRow(index, list){
 			cell.appendChild(text);
 			row.appendChild(cell);
 		}
-		else if(superApprove==-1 && headApprove==-1 && bencoApprove==-1){
+		else if(superApprove==-1 || headApprove==-1 || bencoApprove==-1){
 			var cell = document.createElement("td");
 			var text = document.createTextNode("Denied");
 			cell.appendChild(text);
