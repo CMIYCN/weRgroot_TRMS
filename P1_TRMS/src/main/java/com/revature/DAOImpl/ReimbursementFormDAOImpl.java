@@ -184,7 +184,7 @@ public class ReimbursementFormDAOImpl implements ReimbursementFormDAO {
 	public File getAttachment(String name,ServletContext sc) throws SQLException, IOException {
 		Connection conn = cf.getConnection(sc);
 	
-	      String query = "SELECT FILEN FROM ATTACHMENT WHERE NAMEN = ?";
+	      String query = "SELECT FILEN FROM ATTACHMENT_TEST WHERE NAMEN = ?";
 	      PreparedStatement pstmt = conn.prepareStatement(query);
 	      pstmt.setString(1, name);
 	      ResultSet rs = pstmt.executeQuery();
@@ -198,6 +198,89 @@ public class ReimbursementFormDAOImpl implements ReimbursementFormDAO {
 	      out.close();
 	      return output;
 	}
+	//APPROVAL FOR SUPERVISOR BY JUST DEPARTMENT ID
+	public void supervisorApproval(int formID,ServletContext sc) throws SQLException {
+		Connection conn = cf.getConnection(sc);
+		String sql = "call SUPERVISOR_APPROVAL(?)";
+		PreparedStatement ps;
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, formID);
+			ps.executeQuery();
+			ps.close();
+			conn.close();
+	}
+	//APPROVAL FOR DEPARTMENT HEAD BY JUST FORM ID
+	public void departmentApproval(int formID,ServletContext sc) throws SQLException {
+		Connection conn = cf.getConnection(sc);
+		String sql = "call DEPARTMENT_APPROVAL(?)";
+		PreparedStatement ps;
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, formID);
+			ps.executeQuery();
+			ps.close();
+			conn.close();
+	}
+	//APPROVAL FOR BENCO HEAD BY JUST FORM ID
+		public void bencoApproval(int formID,ServletContext sc) throws SQLException {
+			Connection conn = cf.getConnection(sc);
+			String sql = "call DEPARTMENT_APPROVAL(?)";
+			PreparedStatement ps;
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, formID);
+				ps.executeQuery();
+				ps.close();
+				conn.close();
+		}
+	//SUPERVISOR DENIAL BY FORM ID WITH A REASON FOR DENIAL AS STRING
+	public void supervisorDENIAL(int formID,String reason,ServletContext sc) throws SQLException {
+		Connection conn = cf.getConnection(sc);
+		String sql = "call SUPERVISOR_DENIAL(?,?)";
+		PreparedStatement ps;
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, formID);
+			ps.setString(2,reason);
+			ps.executeQuery();
+			ps.close();
+			conn.close();
+	}
+	//DEPARTMENT DENIAL BY FORM ID WITH A REASON FOR DENIAL AS STRING
+	public void departmentDenial(int formID,String reason,ServletContext sc) throws SQLException {
+		Connection conn = cf.getConnection(sc);
+		String sql = "call DEPARTMENT_DENIAL(?,?)";
+		PreparedStatement ps;
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, formID);
+			ps.setString(2,reason);
+			ps.executeQuery();
+			ps.close();
+			conn.close();
+	}
+	//BENCO DENIAL BY FORM ID WITH A REASON FOR DENIAL AS STRING
+		public void bencoDenial(int formID,String reason,ServletContext sc) throws SQLException {
+			Connection conn = cf.getConnection(sc);
+			String sql = "call BENCO_DENIAL(?,?)";
+			PreparedStatement ps;
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, formID);
+				ps.setString(2,reason);
+				ps.executeQuery();
+				ps.close();
+				conn.close();
+		}
+		//gets denial reason by form ID
+		public String getReason(int formID,ServletContext sc) throws SQLException {
+			Connection conn = cf.getConnection(sc);
+			String sql = "{call GET_REASON(?,?)";
+			CallableStatement call = conn.prepareCall(sql);
+			call.setInt(1, formID);
+			call.registerOutParameter(2, java.sql.Types.VARCHAR);
+			call.execute();
+			String password = call.getString(2);
+			call.close();
+			conn.close();
+			return password;
+			
+		}
 	
 
 }
