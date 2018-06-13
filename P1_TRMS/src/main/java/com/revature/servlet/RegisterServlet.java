@@ -32,8 +32,8 @@ public class RegisterServlet extends HttpServlet {
 			response.sendRedirect(homeName);
 		else {
 			//send error back and have user retry
-			RequestDispatcher rd = request.getRequestDispatcher(errorName);
-			request.setAttribute("message", 1);
+			RequestDispatcher rd = request.getRequestDispatcher(homeName);
+			//request.setAttribute("message", 1);
 			rd.forward(request, response);
 		}
 	}

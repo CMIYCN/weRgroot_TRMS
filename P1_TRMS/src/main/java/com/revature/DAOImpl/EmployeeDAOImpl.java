@@ -51,7 +51,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	public Employee getEmployeeByUsername(String username, ServletContext sc) {
 		Connection conn = cf.getConnection(sc);
 		String sql = "SELECT * FROM EMPLOYEE WHERE EMPLOYEE.USERNAME=?";
-		Employee e = new Employee();
+		Employee e = null;
 		PreparedStatement ps;
 		try {
 			ps = conn.prepareStatement(sql);
