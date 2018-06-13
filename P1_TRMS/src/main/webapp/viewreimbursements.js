@@ -29,6 +29,10 @@ function displayData(){
 					tbl.appendChild(row);
 				}
 				break;
+			case 4:
+				row = addRow(d, list);
+				tbl.appendChild(row);
+				break;
 		}
 	}
 }
