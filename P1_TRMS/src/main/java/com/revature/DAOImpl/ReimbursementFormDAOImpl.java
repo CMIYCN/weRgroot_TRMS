@@ -109,7 +109,6 @@ public class ReimbursementFormDAOImpl implements ReimbursementFormDAO {
 					,rs.getInt(11),rs.getInt(12),rs.getInt(13));
 			reimbursementList.add(rf);
 		}
-		System.out.println(reimbursementList);
 		rs.close();
 		conn.close();
 		return reimbursementList;
