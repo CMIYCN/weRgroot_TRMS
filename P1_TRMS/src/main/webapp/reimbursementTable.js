@@ -1,8 +1,9 @@
-var servletName = "getForms"
+var servletName = "getForm"
 
 function displayData(data){
 	var tbl = document.getElementById("rmTable");
-	var list = ["formID","eventID","emp_ID","cost"];
+	var list = ["formID","eventID","empID","eventTime", "eventDate","location","cost","projectedReimbursement","urgent"];
+	var buttons = ["Approve", "Deny"];
 	for(d in data){
 		var row = document.createElement("tr");
 		list.forEach(function(field){
@@ -11,13 +12,15 @@ function displayData(data){
 			cell.appendChild(text);
 			row.appendChild(cell);
 		})
-		var btnCell = document.createElement("td");
-		var btn = document.createElement("input");
-		btn.setAttribute("type", "submit");
-		btn.setAttribute("value", "View");
-		btn.setAttribute("class", "btn btn-primary");
-		btnCell.appendChild(btn);
-		row.appendChild(btnCell);
+		buttons.forEach(function(btn){
+			var btnCell = document.createElement("td");
+			var btn = document.createElement("input");
+			btn.setAttribute("type", "submit");
+			btn.setAttribute("value", btn);
+			btn.setAttribute("class", "btn btn-primary");
+			btnCell.appendChild(btn);
+			row.appendChild(btnCell);
+		})
 		tbl.appendChild(row);
 	}
 }
