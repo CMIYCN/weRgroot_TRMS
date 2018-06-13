@@ -29,7 +29,7 @@ public class ManageActions {
 		String name = request.getParameter(fullName);
 		
 		//check is usernameExists, register new employee account
-		//if (edi.getEmployeeByUsername(username) == null) {
+		if (edi.getEmployeeByUsername(username, sc) == null) {
 			//createEmployee also needs int employeetype and int manager id or some information that 
 			//would allow to find that out
 			try {
@@ -38,7 +38,7 @@ public class ManageActions {
 			} catch (SQLException e) {
 				
 			}
-		//}
+		}
 		return false;
 	}
 	
@@ -89,8 +89,10 @@ public class ManageActions {
 
 		//get session user id
 		try {
+			Employee emp = edi.getEmployeeByUsername(request.getSession(false).getAttribute("username").toString(), servletContext);
+			int id = emp.getEmpID();
 			rfai.createReimbursementForm(
-					0, 1010, eventTime, eventDate, 
+					0, id, eventTime, eventDate, 
 					location, description, 0F, 
 					0F, 0, 0, 0, 0, servletContext
 			);
