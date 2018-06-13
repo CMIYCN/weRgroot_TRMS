@@ -1,30 +1,66 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-		<title>Reimbursement Table</title>
-		<style>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+		<title>View All Submissions</title>
+		
+		<!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template -->
+    <link href="css/landing-page.min.css" rel="stylesheet">
+    
+<style>
 table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 100%;
+    width: 98%;
 }
 
+table.center {
+    margin-left:auto; 
+    margin-right:auto;
+  }
+
+h4{
+	text-align: center
+}
 td, th {
     border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
+    text-align: center;
+    padding: 2px;
 }
 
 tr:nth-child(even) {
     background-color: #dddddd;
 }
 </style>
+
 </head>
 <body>
-		<h2> Table</h2>
-
-<table id="rmTable">
+<!-- Navigation -->
+    <nav class="navbar navbar-light bg-light static-top">
+      <div class="container">
+        <a class="navbar-brand" href="menu">Pending Submission Forms</a>
+        <div class="row">
+        <div class="col-md-6 mx-auto">
+				<a class="btn btn-primary" href="logout">Sign Out</a>
+		</div>
+      </div>
+      </div>
+    </nav>
+    <br>
+    
+	<br>
+<table id="rmTable" class="center">
   <tr>
     <th>Form ID</th>
     <th>Event ID</th>
@@ -34,10 +70,29 @@ tr:nth-child(even) {
     <th>Event Location</th>
     <th>Event Description</th>
     <th>Event Cost</th>
-    <th>Projected Reimbursement</th>
-    <th>Level Of Urgency</th>
+    <th>Amount Offered</th>
+    <th>How Urgent?</th>
+    <th>Approve/Deny</th>
+  </tr>
+  <tr>
+  	<td></td>
+  	<td></td>
+  	<td></td>
+  	<td></td>
+  	<td></td>
+  	<td></td>
+  	<td></td>
+  	<td></td>
+  	<td></td>
+  	<td></td>
+  	<td>
+  		<input class="btn btn-primary" type="submit" name="approve-btn" value="Approve" style="width:120px;">
+  		<input class="btn btn-primary" type="submit" name="deny-btn" value="Deny" style="width:120px;">
+  	</td>
   </tr>
 </table>
+
+	<script type="text/javascript" src="reimbursementTable.js"></script>
 
 </body>
 </html>
