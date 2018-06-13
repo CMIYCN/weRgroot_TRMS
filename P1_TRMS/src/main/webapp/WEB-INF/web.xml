@@ -121,4 +121,14 @@
     <servlet-name>EmployeeFormsServlet</servlet-name>
     <url-pattern>/employee-forms</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetCurUserPosTypeServlet</display-name>
+    <servlet-name>GetCurUserPosTypeServlet</servlet-name>
+    <servlet-class>com.revature.servlet.GetCurUserPosTypeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetCurUserPosTypeServlet</servlet-name>
+    <url-pattern>/get-type</url-pattern>
+  </servlet-mapping>
 </web-app>
