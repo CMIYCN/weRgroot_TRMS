@@ -17,6 +17,7 @@ public class LoginServlet extends HttpServlet {
 	private static final String loginName = "login.html";
 	private static final String menuName = "menu";
 	private static final String homeName = "home";
+	private static final String managerName = "manager";
 	private static ManageActions ma = new ManageActions(); 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,13 +29,24 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("doPost of LoginServlet");
 		//attempt to login sending form fields
-		boolean success = ma.login(request, getServletContext());
-		if (success) {
+		int type = ma.login(request, getServletContext());
+		if (type == 0) {
 			response.sendRedirect(menuName);
-		} else {
-			//send error back and have user retry
+		} else if (type == 1) {
+			//direct supervisor page
+			response.sendRedirect(managerName);
+		} else if (type == 2) {
+			//department head page
+			response.sendRedirect(managerName);
+		} else if (type == 3) {
+			//benco page
+			response.sendRedirect(managerName);
+		} else if (type == 4) {
+			//ceo page
+			response.sendRedirect(managerName);
+		} else
 			response.sendRedirect(homeName);
-		}
+		
 	}
 
 }

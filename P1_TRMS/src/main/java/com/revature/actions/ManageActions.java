@@ -42,7 +42,7 @@ public class ManageActions {
 		return false;
 	}
 	
-	public boolean login(HttpServletRequest request, ServletContext sc) {
+	public int login(HttpServletRequest request, ServletContext sc) {
 		String username = request.getParameter(user);
 		String password = request.getParameter(pass);
 		
@@ -52,9 +52,10 @@ public class ManageActions {
 			HttpSession session = request.getSession();  
 		    session.setAttribute("username", username); 
 		    session.setAttribute("password", password);
-			return true;
+		    //set type to session or return it
+			return emp.getPositionID();
 		}
-		return false;
+		return -1;
 	}
 	
 	public void menuOptionSelect(HttpServletRequest request, ServletContext sc, HttpServletResponse response) {
