@@ -94,10 +94,7 @@ public class ReimbursementFormDAOImpl implements ReimbursementFormDAO {
 
 	public List<ReimbursementForm> getReimbursementForm(int empID, ServletContext sc) throws SQLException {
 		Connection conn = cf.getConnection(sc);
-		String sql = "SELECT * FROM REIMBURSEMENT_FORM\n" + 
-				"INNER JOIN APPROVALS" + 
-				"ON REIMBURSEMENT_FORM.FORM_ID = APPROVALS.FORM_ID" + 
-				"WHERE REIMBURSEMENT_FORM.EMP_ID=?";
+		String sql = "SELECT * FROM REIMBURSEMENT_FORM RF INNER JOIN APPROVALS A ON RF.FORM_ID = A.FORM_ID WHERE RF.EMP_ID=?";
 		List<ReimbursementForm> reimbursementList = new ArrayList<ReimbursementForm>();
 		PreparedStatement ps = conn.prepareStatement(sql);
 		
@@ -106,9 +103,13 @@ public class ReimbursementFormDAOImpl implements ReimbursementFormDAO {
 		ReimbursementForm rf;
 		
 		while(rs.next()) {
-			rf = new ReimbursementForm(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getFloat(8),rs.getFloat(9),rs.getInt(10),rs.getInt(12),rs.getInt(13),rs.getInt(14));
+			rf = new ReimbursementForm(rs.getInt(1),rs.getInt(2),rs.getInt(3),
+					rs.getString(4),rs.getString(5),rs.getString(6),
+					rs.getString(7),rs.getFloat(8),rs.getFloat(9),rs.getInt(10)
+					,rs.getInt(11),rs.getInt(12),rs.getInt(13));
 			reimbursementList.add(rf);
 		}
+		System.out.println(reimbursementList);
 		rs.close();
 		conn.close();
 		return reimbursementList;
