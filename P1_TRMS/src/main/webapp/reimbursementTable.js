@@ -5,7 +5,6 @@ function displayData(data,url){
 	console.log(formID);
 	var row = document.getElementById("rmRow");
 	var list = ["formID","eventID","empID","eventTime", "eventDate","location","description","cost","projectedReimbursement","urgent"];
-//	var buttons = ["Approve", "Deny"];
 	for(d in data){
 		if(data[d].formID === formID){
 			list.forEach(function(field){
@@ -15,15 +14,6 @@ function displayData(data,url){
 				row.appendChild(cell);
 			})
 		}
-//		buttons.forEach(function(btn){
-//			var btnCell = document.createElement("td");
-//			var btn = document.createElement("input");
-//			btn.setAttribute("type", "submit");
-//			btn.setAttribute("value", btn);
-//			btn.setAttribute("class", "btn btn-primary");
-//			btnCell.appendChild(btn);
-//			row.appendChild(btnCell);
-//		})
 	}
 }
 
