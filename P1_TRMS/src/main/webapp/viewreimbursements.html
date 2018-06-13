@@ -20,6 +20,33 @@
 
     <!-- Custom styles for this template -->
     <link href="css/landing-page.min.css" rel="stylesheet">
+    
+    <style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 50%;
+}
+
+table.center {
+    margin-left:auto; 
+    margin-right:auto;
+  }
+
+h4{
+	text-align: center
+}
+td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 2px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+    
 
   </head>
 
@@ -37,20 +64,18 @@
       </div>
     </nav>
 
-	<div class="container">
-		<div class="row">
-			<div class="col-md-6">
-			    <table style="width:90%" id="reimburse-tbl">
+	<br>
+	
+			    <table class="center" id="reimburse-tbl">
 			    	<tr>
-			    		<th>Form_ID</th>
-			    		<th>Event_ID</th>
-			    		<th>Emp_ID</th>
-			    		<th>Cost</th>
+			    		<th>Form ID</th>
+			    		<th>Event ID</th>
+			    		<th>Employee ID</th>
+			    		<th>Event Cost</th>
+			    		<th> </th>
 			    	</tr>
 			    </table>
-			</div>
-		</div>
-	</div>
+			
 
 
     <!-- Bootstrap core JavaScript -->
