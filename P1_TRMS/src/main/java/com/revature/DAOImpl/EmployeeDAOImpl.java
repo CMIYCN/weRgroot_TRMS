@@ -65,7 +65,6 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 					rs.getInt(6),
 					rs.getString(2),
 					rs.getString(3));
-			System.out.println(e);
 			rs.close();
 			ps.close();
 			conn.close();
