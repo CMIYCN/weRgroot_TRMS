@@ -63,12 +63,26 @@ function addRow(index, list){
 		btnCell.appendChild(form);
 	
 		row.appendChild(btnCell);
-	}else if(positionType === 0 && tableData[index].supervisorApproval)
-	{
-		var cell = document.createElement("td");
-		var text = document.createTextNode(tableData[index][field]);
-		cell.appendChild(text);
-		row.appendChild(cell);
+	}else{
+		document.getElementById("emptyHeader").innerHTML = "Status";
+		if(superApprove && headApprove && bencoApprove){
+			var cell = document.createElement("td");
+			var text = document.createTextNode("Approved");
+			cell.appendChild(text);
+			row.appendChild(cell);
+		}
+		else if(superApprove==-1 && headApprove==-1 && bencoApprove==-1){
+			var cell = document.createElement("td");
+			var text = document.createTextNode("Denied");
+			cell.appendChild(text);
+			row.appendChild(cell);
+		}
+		else{
+			var cell = document.createElement("td");
+			var text = document.createTextNode("Pending");
+			cell.appendChild(text);
+			row.appendChild(cell);
+		}
 	}
 	return row;
 }
