@@ -17,7 +17,7 @@ public class GetFormsServlet extends HttpServlet {
 	private static ManageActions ma = new ManageActions();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("doGet of ErrorServlet");
+		System.out.println("doGet of GetFormsServlet");
 		//we have message in request
 		Gson gson = new Gson();
 		try {

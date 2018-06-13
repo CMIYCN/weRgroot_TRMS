@@ -91,4 +91,14 @@
     <servlet-name>ViewSpecificReimbursementServlet</servlet-name>
     <url-pattern>/view</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>GetFormServlet</display-name>
+    <servlet-name>GetFormServlet</servlet-name>
+    <servlet-class>com.revature.servlet.GetFormServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GetFormServlet</servlet-name>
+    <url-pattern>/get-form</url-pattern>
+  </servlet-mapping>
 </web-app>
