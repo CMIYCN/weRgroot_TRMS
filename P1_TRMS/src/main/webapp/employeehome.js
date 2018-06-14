@@ -1,6 +1,6 @@
 function showName(empData){
 	var welcome = document.getElementById("empTitle");
-	welcome.innerHTML = "Welcome "+empData.name+"!";
+	welcome.innerHTML = "Welcome, "+empData.name+"!";
 }
 window.onload = function (){
 	console.log("inEmployeeHome");
