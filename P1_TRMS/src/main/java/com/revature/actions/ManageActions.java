@@ -23,6 +23,7 @@ public class ManageActions {
 	private static final String mainName = "home";
 	private static final String viewName = "view-reimbursements";
 	
+	//new employee can register
 	public boolean register(HttpServletRequest request, ServletContext sc) {
 		String username = request.getParameter(user);
 		String password = request.getParameter(pass);
@@ -59,6 +60,9 @@ public class ManageActions {
 		return -1;
 	}
 	
+	//menus are displayed based on who is logged in
+	//if it's an employee, it displays employee menu
+	//if it's a manager, it displays manager menu
 	public void menuOptionSelect(HttpServletRequest request, ServletContext sc, HttpServletResponse response) {
 		String btnNew = request.getParameter("newreimbursement-button");
 		String btnView = request.getParameter("viewreimbursement-button");
