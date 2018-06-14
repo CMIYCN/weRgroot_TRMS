@@ -39,9 +39,17 @@ function displayData(){
 
 function addRow(index, list){
 	var row = document.createElement("tr");
+	var data;
 	list.forEach(function(field){
+		if(field === "cost" || field === "projectedReimbursement"){
+			data = "$"+parseFloat(tableData[index][field]).toFixed(2);
+		}else if(field === "eventType"){
+			data = getEventType(tableData[index][field]);
+		}else{
+			data = tableData[index][field];
+		}
 		var cell = document.createElement("td");
-		var text = document.createTextNode(tableData[index][field]);
+		var text = document.createTextNode(data);
 		cell.appendChild(text);
 		row.appendChild(cell);
 	})
@@ -89,6 +97,30 @@ function addRow(index, list){
 		}
 	}
 	return row;
+}
+
+function getEventType(eventid){
+	switch(eventid){
+	case 0:
+		eventtype = "University Courses";
+		break;
+	case 1:
+		eventtype = "Seminars";
+		break;
+	case 2:
+		eventtype = "Certification Preparation Classes";
+		break;
+	case 3:
+		eventtype = "Certification";
+		break;
+	case 4:
+		eventtype = "Technical Training";
+		break;
+	case 5:
+		eventtype = "Other";
+		break;
+	}
+	return eventtype;
 }
 
 function getPosition(){
