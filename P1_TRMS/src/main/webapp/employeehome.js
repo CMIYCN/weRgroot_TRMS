@@ -1,3 +1,4 @@
+//name of the user is displayed in the title as well as in the header
 function showName(empData){
 	var webHeader = document.getElementById("empPageTitle");
 	var welcome = document.getElementById("empTitle");
