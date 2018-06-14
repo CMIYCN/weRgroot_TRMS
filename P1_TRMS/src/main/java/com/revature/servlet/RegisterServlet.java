@@ -3,7 +3,6 @@ package com.revature.servlet;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +14,6 @@ public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String homeName = "home";
 	private static final String regName = "register.html";
-	private static final String errorName = "error";
 	private static ManageActions ma = new ManageActions(); 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,13 +26,8 @@ public class RegisterServlet extends HttpServlet {
 		System.out.println("doPost of RegisterServlet");
 		//attempt to register new user sending values
 		boolean success = ma.register(request, getServletContext());
-		if (success) 
-			response.sendRedirect(homeName);
-		else {
-			//send error back and have user retry
-			RequestDispatcher rd = request.getRequestDispatcher(homeName);
-			//request.setAttribute("message", 1);
-			rd.forward(request, response);
-		}
+		//always redirect to home, success can be used to display an error if failure
+		response.sendRedirect(homeName);
+
 	}
 }
