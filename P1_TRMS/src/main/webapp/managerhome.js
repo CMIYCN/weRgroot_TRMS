@@ -1,3 +1,4 @@
+//name of the user displayed in the title as well as in the header
 function showName(empData){
 	var managerHeader = document.getElementById("manPageTitle");
 	var welcome = document.getElementById("managerTitle");

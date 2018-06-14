@@ -99,6 +99,8 @@ public class ManageActions {
 		}
 	}
 
+	//logout: once an employee or a manager clicks the "Sign Out" button
+	//it calls the logout method and invalidates the session
 	public void logout(HttpServletRequest request) {
 		HttpSession session = request.getSession();  
         session.invalidate();
@@ -115,6 +117,7 @@ public class ManageActions {
         }  
 	}
 	
+	//lists all the reimbursement form to be approved or deny
 	public List<ReimbursementForm> getStringReimbursementForms(ServletContext sc, HttpServletRequest request) throws SQLException{
 		Employee emp = edi.getEmployeeByUsername(request.getSession(false).getAttribute("username").toString(), sc);
 		List<ReimbursementForm> reimburseForms;
@@ -132,6 +135,9 @@ public class ManageActions {
 		return rf;
 	}
 
+	//approve: When a manager approves a reimbursement request,
+	//the approve method is called and the request is forwarded to the
+	//next highest ranked manager. All three managers have to approve every request
 	public void approve(ServletContext sc, HttpServletRequest request, int formID) throws SQLException {
 		Employee emp = edi.getEmployeeByUsername(request.getSession(false).getAttribute("username").toString(), sc);
 		
@@ -154,6 +160,8 @@ public class ManageActions {
 		}
 	}
 
+	//deny: The request goes through the direct supervisor and then to the next level manager
+	//if first level manager denies it, the form doesn't go to the next level
 	public void deny(ServletContext sc, HttpServletRequest request, int formID) throws SQLException {
 		Employee emp = edi.getEmployeeByUsername(request.getSession(false).getAttribute("username").toString(), sc);
 		
