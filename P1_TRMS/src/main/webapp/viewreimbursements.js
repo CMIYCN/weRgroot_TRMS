@@ -142,7 +142,6 @@ function getPosition(){
 }
 	
 window.onload = function (){
-	console.log("woo");
 	getPosition();
 	var xhr = new XMLHttpRequest();
 	//Step 2 function to handle onreadystatechange of response
