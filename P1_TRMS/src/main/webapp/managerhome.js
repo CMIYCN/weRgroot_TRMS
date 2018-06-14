@@ -1,5 +1,7 @@
 function showName(empData){
+	var managerHeader = document.getElementById("manPageTitle");
 	var welcome = document.getElementById("managerTitle");
+	managerHeader.innerHTML = empData.name;
 	welcome.innerHTML = "Welcome, "+empData.name+"!";
 }
 window.onload = function (){
