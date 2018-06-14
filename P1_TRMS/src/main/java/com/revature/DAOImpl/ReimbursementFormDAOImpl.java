@@ -36,11 +36,11 @@ public class ReimbursementFormDAOImpl implements ReimbursementFormDAO {
 		ReimbursementForm rf;
 		
 		while(rs.next()) {
-			rf = new ReimbursementForm(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getString(4),
-					rs.getString(5),rs.getString(6),rs.getString(7),rs.getFloat(8),
-					rs.getFloat(9),rs.getInt(10),rs.getInt(12),rs.getInt(13),rs.getInt(14));
+			rf = new ReimbursementForm(rs.getInt(1),rs.getInt(2),
+					rs.getString(3),rs.getString(4),rs.getString(5),
+					rs.getString(6),rs.getFloat(7),rs.getFloat(8),rs.getInt(9),
+					rs.getInt(10),rs.getInt(12),rs.getInt(13),rs.getInt(14));;
 			reimbursementList.add(rf);
-			System.out.println(rs.getInt(11));
 		}
 		rs.close();
 		conn.close();
@@ -59,9 +59,9 @@ public class ReimbursementFormDAOImpl implements ReimbursementFormDAO {
 		ReimbursementForm rf = null;
 		
 		while(rs.next()) {
-			rf = new ReimbursementForm(rs.getInt(1),rs.getInt(2),rs.getInt(3),
-					rs.getString(4),rs.getString(5),rs.getString(6),
-					rs.getString(7),rs.getFloat(8),rs.getFloat(9),
+			rf = new ReimbursementForm(rs.getInt(1),rs.getInt(2),
+					rs.getString(3),rs.getString(4),rs.getString(5),
+					rs.getString(6),rs.getFloat(7),rs.getFloat(8),rs.getInt(9),
 					rs.getInt(10),rs.getInt(12),rs.getInt(13),rs.getInt(14));
 		}
 		rs.close();
@@ -69,21 +69,21 @@ public class ReimbursementFormDAOImpl implements ReimbursementFormDAO {
 		return rf;
 	}
 
-	public void createReimbursementForm(int eventID,int empID,String eventTime,
+	public void createReimbursementForm(int empID,String eventTime,
 			String eventDate,String location,String description,Float cost,Float projectedReimbursement,int urgent,
-			int supervisorApproval,int departmentApproval, int bencoApproval, ServletContext sc) throws SQLException {
+			int eventType, int supervisorApproval,int departmentApproval, int bencoApproval, ServletContext sc) throws SQLException {
 		Connection conn = cf.getConnection(sc);
 		String sql = "{call CREATE_REIMBURSEMENT_FORM(?,?,?,?,?,?,?,?,?,?,?,?)";
 		CallableStatement call = conn.prepareCall(sql);
-		call.setInt(1, eventID);
-		call.setInt(2, empID);
-		call.setString(3, eventTime);
-		call.setString(4, eventDate);
-		call.setString(5, location);
-		call.setString(6, description);
-		call.setFloat(7, cost);
-		call.setFloat(8, projectedReimbursement);
-		call.setInt(9, urgent);
+		call.setInt(1, empID);
+		call.setString(2, eventTime);
+		call.setString(3, eventDate);
+		call.setString(4, location);
+		call.setString(5, description);
+		call.setFloat(6, cost);
+		call.setFloat(7, projectedReimbursement);
+		call.setInt(8, urgent);
+		call.setInt(9, eventType);
 		call.setInt(10, supervisorApproval);
 		call.setInt(11, departmentApproval);
 		call.setInt(12, bencoApproval);
@@ -104,13 +104,12 @@ public class ReimbursementFormDAOImpl implements ReimbursementFormDAO {
 		ReimbursementForm rf;
 		
 		while(rs.next()) {
-			rf = new ReimbursementForm(rs.getInt(1),rs.getInt(2),rs.getInt(3),
-					rs.getString(4),rs.getString(5),rs.getString(6),
-					rs.getString(7),rs.getFloat(8),rs.getFloat(9),rs.getInt(10)
-					,rs.getInt(12),rs.getInt(13),rs.getInt(14));
+			rf = new ReimbursementForm(rs.getInt(1),rs.getInt(2),
+					rs.getString(3),rs.getString(4),rs.getString(5),
+					rs.getString(6),rs.getFloat(7),rs.getFloat(8),rs.getInt(9),
+					rs.getInt(10),rs.getInt(12),rs.getInt(13),rs.getInt(14));
 			reimbursementList.add(rf);
 		}
-		System.out.println(reimbursementList);
 		rs.close();
 		conn.close();
 		return reimbursementList;

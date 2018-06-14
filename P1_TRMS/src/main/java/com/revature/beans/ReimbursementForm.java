@@ -2,7 +2,6 @@ package com.revature.beans;
 
 public class ReimbursementForm {
 	private int formID;
-	private int eventID;
 	private int empID;
 	private String eventTime;
 	private String eventDate;
@@ -11,15 +10,15 @@ public class ReimbursementForm {
 	private Float cost;
 	private float projectedReimbursement;
 	private int urgent;
+	private int eventType;
 	private int supervisorApproval;
 	private int departmentApproval;
 	private int bencoApproval;
-	public ReimbursementForm(int formID, int eventID, int empID, String eventTime, String eventDate, String location,
+	public ReimbursementForm(int formID, int empID, String eventTime, String eventDate, String location,
 			String description, Float cost, float projectedReimbursement, int urgent,
-			int supervisorApproval, int departmentApproval, int bencoApproval) {
+			int eventType, int supervisorApproval, int departmentApproval, int bencoApproval) {
 		super();
 		this.formID = formID;
-		this.eventID = eventID;
 		this.empID = empID;
 		this.eventTime = eventTime;
 		this.eventDate = eventDate;
@@ -28,6 +27,7 @@ public class ReimbursementForm {
 		this.cost = cost;
 		this.projectedReimbursement = projectedReimbursement;
 		this.urgent = urgent;
+		this.eventType = eventType;
 		this.supervisorApproval = supervisorApproval;
 		this.departmentApproval = departmentApproval;
 		this.bencoApproval = bencoApproval;
@@ -38,12 +38,6 @@ public class ReimbursementForm {
 	}
 	public void setFormID(int formID) {
 		this.formID = formID;
-	}
-	public int getEventID() {
-		return eventID;
-	}
-	public void setEventID(int eventID) {
-		this.eventID = eventID;
 	}
 	public int getEmpID() {
 		return empID;
@@ -92,6 +86,12 @@ public class ReimbursementForm {
 	}
 	public void setUrgent(int urgent) {
 		this.urgent = urgent;
+	}
+	public int getEventType() {
+		return eventType;
+	}
+	public void setEventType(int eventType) {
+		this.eventType = eventType;
 	}
 	public int getSupervisorApproval() {
 		return supervisorApproval;

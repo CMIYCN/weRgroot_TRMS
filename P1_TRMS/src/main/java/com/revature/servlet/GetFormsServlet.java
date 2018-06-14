@@ -27,10 +27,6 @@ public class GetFormsServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		//go to register page with error
-//		RequestDispatcher rd = request.getRequestDispatcher(regName);
-//		rd.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

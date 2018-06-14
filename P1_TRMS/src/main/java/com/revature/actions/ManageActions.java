@@ -72,10 +72,6 @@ public class ManageActions {
 		} catch (IOException e) {
 			
 		}
-
-//        HttpSession session = request.getSession(false);  
-//        String n = (String)session.getAttribute("username"); 
-//        System.out.println();
 	}
 
 	public void fileReimbursement(HttpServletRequest request, ServletContext servletContext) {
@@ -85,16 +81,17 @@ public class ManageActions {
 		String eventDate = request.getParameter("eventdate");
 		String location = request.getParameter("location");
 		String description = request.getParameter("description");
+		int eventType = Integer.parseInt(request.getParameter("event-type"));
 		Float cost = Float.parseFloat(request.getParameter("cost"));
-
+		
 		//get session user id
 		try {
 			Employee emp = edi.getEmployeeByUsername(request.getSession(false).getAttribute("username").toString(), servletContext);
 			int id = emp.getEmpID();
 			rfai.createReimbursementForm(
-					0, id, eventTime, eventDate, 
+					id, eventTime, eventDate, 
 					location, description, cost, 
-					0F, 0, 0, 0, 0, servletContext
+					0F, 0, eventType, 0, 0, 0, servletContext
 			);
 		} catch (SQLException e) {
 			e.printStackTrace();
