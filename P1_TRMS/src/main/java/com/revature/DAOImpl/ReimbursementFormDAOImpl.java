@@ -222,7 +222,7 @@ public class ReimbursementFormDAOImpl implements ReimbursementFormDAO {
 	//BENCO DENIAL BY FORM ID WITH A REASON FOR DENIAL AS STRING
 		public void bencoDenial(int formID,String reason,ServletContext sc) throws SQLException {
 			Connection conn = cf.getConnection(sc);
-			String sql = "call BENCO_DENIAL(?,?)";
+			String sql = "call BENCO_DENAIL(?,?)";
 			PreparedStatement ps;
 				ps = conn.prepareStatement(sql);
 				ps.setInt(1, formID);
