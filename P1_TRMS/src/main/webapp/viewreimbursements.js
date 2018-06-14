@@ -78,7 +78,7 @@ function addRow(index, list){
 		row.appendChild(btnCell);
 	}else{
 		document.getElementById("emptyHeader").innerHTML = "Status";
-		if(superApprove && headApprove && bencoApprove){
+		if(superApprove===1 && headApprove===1 && bencoApprove===1){
 			var cell = document.createElement("td");
 			var text = document.createTextNode("Approved");
 			cell.appendChild(text);
