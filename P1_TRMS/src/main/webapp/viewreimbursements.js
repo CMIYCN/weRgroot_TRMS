@@ -4,7 +4,7 @@ var positionType;
 
 function displayData(){
 	var tbl = document.getElementById("reimburse-tbl");
-	var list = ["formID","eventID","empID","cost", "projectedReimbursement"];//,"supervisorApproval", "departmentApproval", "bencoApproval"];
+	var list = ["formID","eventType","empID","cost", "projectedReimbursement"];//,"supervisorApproval", "departmentApproval", "bencoApproval"];
 	for(d in tableData){
 		switch(positionType){
 			case 0:
