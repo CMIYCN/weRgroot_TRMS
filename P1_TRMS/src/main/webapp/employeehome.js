@@ -1,6 +1,8 @@
 function showName(empData){
+	var webHeader = document.getElementById("empPageTitle");
 	var welcome = document.getElementById("empTitle");
-	welcome.text = "Welcome, "+empData.name+"!";
+	webHeader.innerHTML = empData.name;
+	welcome.innerHTML = "Welcome, "+empData.name+"!";
 }
 window.onload = function (){
 	console.log("inEmployeeHome");
