@@ -18,13 +18,14 @@ function displayData(){
 				}
 				break;
 			case 2:
-				if(!tableData[d].departmentApproval){
+				if(!tableData[d].departmentApproval && tableData[d].supervisorApproval === 1){
 					row = addRow(d, list);
 					tbl.appendChild(row);
 				}
 				break;
 			case 3:
-				if(!tableData[d].bencoApproval){
+				if(!tableData[d].bencoApproval && tableData[d].supervisorApproval === 1 && tableData[d].departmentApproval ===1){
+					console.log(tableData[d].departmentApproval+" "+tableData[d].formID);
 					row = addRow(d, list);
 					tbl.appendChild(row);
 				}
