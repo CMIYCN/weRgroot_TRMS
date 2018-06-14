@@ -6,7 +6,6 @@ function displayData(data,url){
 	var list = ["formID","eventType","empID","eventTime", "eventDate","location","description","cost","projectedReimbursement","urgent"];
 	var tblData;
 	for(d in data){
-		console.log(data[d]);
 		if(data[d].formID === formID){
 			list.forEach(function(field){
 				if(field === "cost" || field === "projectedReimbursement"){
