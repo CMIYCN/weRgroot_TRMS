@@ -20,7 +20,7 @@ public class GetCurUserPosTypeServlet extends HttpServlet {
 		Employee emp = edi.getEmployeeByUsername(request.getSession(false).getAttribute("username").toString(), getServletContext());
 		Gson gson = new Gson();
 
-		response.getWriter().write(gson.toJson(emp.getPositionID()));
+		response.getWriter().write(gson.toJson(emp));
 		response.flushBuffer();
 	}
 
