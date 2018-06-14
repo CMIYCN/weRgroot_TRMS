@@ -245,6 +245,18 @@ public class ReimbursementFormDAOImpl implements ReimbursementFormDAO {
 			return password;
 			
 		}
+		//allows benco to change projected reimbursement
+		public void updateReimbursement(int formID,Float amount,ServletContext sc) throws SQLException{
+			Connection conn = cf.getConnection(sc);
+			String sql = "call UPDATE_AMOUNT(?,?)";
+			PreparedStatement ps;
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, formID);
+				ps.setFloat(2,amount);
+				ps.executeQuery();
+				ps.close();
+				conn.close();
+		}
 	
 
 }
