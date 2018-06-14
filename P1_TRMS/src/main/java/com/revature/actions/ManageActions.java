@@ -27,9 +27,10 @@ public class ManageActions {
 		String username = request.getParameter(user);
 		String password = request.getParameter(pass);
 		String name = request.getParameter(fullName);
+		Employee emp = edi.getEmployeeByUsername(username, sc);
 		
 		//check is usernameExists, register new employee account
-		if (edi.getEmployeeByUsername(username, sc) == null) {
+		if (emp == null) {
 			//createEmployee also needs int employeetype and int manager id or some information that 
 			//would allow to find that out
 			try {
@@ -167,6 +168,7 @@ public class ManageActions {
 				break;
 			case 3:
 				//benco
+				System.out.println("benco deny");
 				rfai.bencoDenial(formID, "Because I said so.", sc);
 				break;
 			case 4:
