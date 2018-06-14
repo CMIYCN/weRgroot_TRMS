@@ -91,7 +91,7 @@ public class ManageActions {
 			rfai.createReimbursementForm(
 					id, eventTime, eventDate, 
 					location, description, cost, 
-					0F, eventType, 0, 0, 0, 0, servletContext
+					0F, 0, eventType, 0, 0, 0, servletContext
 			);
 		} catch (SQLException e) {
 			e.printStackTrace();
