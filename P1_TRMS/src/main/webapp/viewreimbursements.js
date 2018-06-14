@@ -129,7 +129,8 @@ function getPosition(){
 	xhrPosition.onreadystatechange=function(){
 		if(xhrPosition.readyState == 4 && xhrPosition.status == 200){
 			count++;
-			positionType = JSON.parse(xhrPosition.responseText);
+			var employee = JSON.parse(xhrPosition.responseText);
+			positionType = employee.positionID;
 			if(count===2){
 				displayData();
 			}
