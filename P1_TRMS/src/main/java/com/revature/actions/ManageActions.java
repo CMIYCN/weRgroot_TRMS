@@ -72,10 +72,6 @@ public class ManageActions {
 		} catch (IOException e) {
 			
 		}
-
-//        HttpSession session = request.getSession(false);  
-//        String n = (String)session.getAttribute("username"); 
-//        System.out.println();
 	}
 
 	public void fileReimbursement(HttpServletRequest request, ServletContext servletContext) {
